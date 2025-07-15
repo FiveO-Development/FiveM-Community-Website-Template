@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Grit City Roleplay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        :root {
+            --primary-color: #9e1c1c;
+            --primary-dark: #7a1515;
+            --primary-light: #b92a2a;
+            --secondary-color: #1e1215;
+            --background-color: #0f0809;
+            --card-color: #1e1215;
+            --text-color: #f8fafc;
+            --border-color: #33151a;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+            --hover-color: #ca2020;
+        }
+        
+        .light-mode {
+            --primary-color: #ca2020;
+            --primary-dark: #9e1c1c;
+            --primary-light: #e63535;
+            --secondary-color: #f0f0f0;
+            --background-color: #ffffff;
+            --card-color: #f0f0f0;
+            --text-color: #1e1215;
+            --border-color: #dfdfdf;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.1rem;
+            padding-bottom: rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .server-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .server-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem;
+            margin-left: 250px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .page-description {
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Terms Content */
+        .terms-section {
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .terms-content {
+            margin-bottom: 2rem;
+        }
+
+        .terms-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-color);
+        }
+
+        .terms-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .terms-content ul, .terms-content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .terms-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .terms-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .terms-content a:hover {
+            text-decoration: underline;
+        }
+
+        .important-notice {
+            background-color: rgba(158, 28, 28, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .important-notice h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Last Updated */
+        .last-updated {
+            text-align: right;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icon {
+            display: inline-block;
+            color: var(--text-color);
+            font-size: 1.4rem;
+            margin: 0 3px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 100%;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .terms-section {
+                padding: 1.5rem;
+            }
+        }
+
+       /* Mobile Menu Toggle */
+       .menu-toggle {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle i {
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="server-logo" style="width: 175px; height: 175px;">
+                    <img src="img/logo.png" alt="Grit City RP Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="rules.html" class="nav-link">
+                    <i class="fas fa-gavel"></i>
+                    <span>Rules</span>
+                </a>
+                <a href="http://15.204.254.116:3000/" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    <span>Tourist Map</span>
+                </a>
+                <a href="businesses.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Businesses</span>
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <i class="fas fa-cube"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="community.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="https://fiveodevelopment.tebex.io/category/webtemplate" class="nav-link">
+                    <i class="fas fa-store"></i>
+                    <span>VIP Store</span>
+                </a>
+                <a href="application.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Apply</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>&copy; 2025 Grit City Roleplay</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 class="page-title">Terms of Service</h1>
+            <p class="page-description">Please read these Terms of Service carefully before using the Grit City Roleplay website and server. By accessing or using our services, you agree to be bound by these terms.</p>
+            
+            <div class="last-updated">Last Updated: May 14, 2025</div>
+            
+            <!-- Important Notice -->
+            <div class="important-notice">
+                <h3>Important Notice</h3>
+                <p>By using Grit City Roleplay's website, FiveM server, Discord, or any associated services, you acknowledge and agree to these Terms of Service. If you do not agree with any part of these terms, please do not use our services.</p>
+            </div>
+            
+            <!-- Terms Content -->
+            <div class="terms-section">
+                <h2 class="section-title" id="acceptance">1. Acceptance of Terms</h2>
+                <div class="terms-content">
+                    <p>By accessing or using the Grit City Roleplay website, FiveM server, Discord, or any other services provided by Grit City Roleplay (collectively referred to as "Services"), you agree to be bound by these Terms of Service ("Terms"), our Privacy Policy, and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing our Services.</p>
+                    
+                    <p>These Terms constitute a legally binding agreement between you and Grit City Roleplay ("we," "us," or "our"). You must be at least 16 years of age to use our Services. If you are under 18 years old, you confirm that you have permission from a parent or guardian to use our Services.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="definitions">2. Definitions</h2>
+                <div class="terms-content">
+                    <p>Throughout these Terms, the following definitions apply:</p>
+                    
+                    <ul>
+                        <li><strong>"Services"</strong> refers to the Grit City Roleplay website, FiveM server, Discord server, and any other platforms or services operated by Grit City Roleplay.</li>
+                        <li><strong>"User"</strong> or <strong>"you"</strong> refers to any individual who accesses or uses our Services.</li>
+                        <li><strong>"Content"</strong> refers to all information, text, images, audio, video, graphics, and other materials that are uploaded, downloaded, or appearing on our Services.</li>
+                        <li><strong>"User Content"</strong> refers to any Content that users submit, upload, or transmit to or through our Services.</li>
+                        <li><strong>"In-Game Assets"</strong> refers to virtual items, currency, characters, vehicles, properties, or other digital items or content available within our FiveM server.</li>
+                        <li><strong>"VIP Purchases"</strong> refers to any premium features, benefits, or In-Game Assets purchased through our VIP Store.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="access">3. Access to Services</h2>
+                <div class="terms-content">
+                    <p>We reserve the right to withdraw or modify our Services, and any service or material we provide, in our sole discretion without notice. We will not be liable if, for any reason, all or any part of the Services are unavailable at any time or for any period.</p>
+                    
+                    <p>From time to time, we may restrict access to some parts of the Services, or the entire Services, to users, including registered users. You are responsible for ensuring that your access to our Services complies with these Terms and all applicable laws and regulations.</p>
+                    
+                    <h3>3.1 Technical Requirements</h3>
+                    <p>To access our FiveM server, you must have:</p>
+                    <ul>
+                        <li>A legal copy of Grand Theft Auto V</li>
+                        <li>The latest version of the FiveM client</li>
+                        <li>Hardware and software that meet the minimum requirements for running both GTA V and FiveM</li>
+                        <li>A stable internet connection</li>
+                    </ul>
+                    
+                    <h3>3.2 Server Rules</h3>
+                    <p>In addition to these Terms, users must comply with all server rules posted on our website or within our Discord. Server rules are incorporated by reference into these Terms. Violation of server rules may result in temporary or permanent suspension from our Services.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="account">4. User Accounts</h2>
+                <div class="terms-content">
+                    <p>You may be required to register an account to access certain features of our Services. When you create an account, you agree to provide accurate, current, and complete information. You are solely responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+                    
+                    <h3>4.1 Account Security</h3>
+                    <p>You agree to:</p>
+                    <ul>
+                        <li>Immediately notify us of any unauthorized use of your account or any other breach of security</li>
+                        <li>Ensure that you log out of your account at the end of each session when accessing our Services</li>
+                        <li>Not share your account credentials with any third party</li>
+                    </ul>
+                    
+                    <h3>4.2 Account Ownership</h3>
+                    <p>All accounts created on our Services belong to Grit City Roleplay. You are granted a limited, revocable license to use your account in accordance with these Terms. We reserve the right to suspend or terminate your account at any time for any reason without notice or liability.</p>
+                    
+                    <h3>4.3 Character Data</h3>
+                    <p>All character data, including but not limited to character progression, in-game assets, and virtual currency, is stored on our servers and remains our property. You acknowledge that you do not own any character data or In-Game Assets and have no right or title in or to any such data.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="conduct">5. User Conduct</h2>
+                <div class="terms-content">
+                    <p>You agree to use our Services only for lawful purposes and in accordance with these Terms. You agree not to use our Services:</p>
+                    
+                    <ul>
+                        <li>In any way that violates any applicable federal, state, local, or international law or regulation</li>
+                        <li>To exploit, harm, or attempt to exploit or harm minors in any way</li>
+                        <li>To transmit any material that is defamatory, obscene, offensive, hateful, or otherwise objectionable</li>
+                        <li>To impersonate or attempt to impersonate Grit City Roleplay, a Grit City Roleplay employee, another user, or any other person or entity</li>
+                        <li>To engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Services</li>
+                        <li>To use any robot, spider, or other automatic device, process, or means to access the Services for any purpose, including monitoring or copying any material on the Services</li>
+                        <li>To introduce any viruses, Trojan horses, worms, logic bombs, or other malicious or technologically harmful material</li>
+                        <li>To attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Services, the server on which the Services are stored, or any server, computer, or database connected to the Services</li>
+                        <li>To engage in metagaming, powergaming, combat logging, or other disruptive roleplaying practices</li>
+                        <li>To use exploits, hacks, unauthorized mods, or cheats while using our Services</li>
+                        <li>To engage in any activity that disrupts or interferes with the intended roleplaying experience</li>
+                    </ul>
+                    
+                    <h3>5.1 Roleplaying Standards</h3>
+                    <p>As a roleplaying server, we expect users to maintain a standard of quality roleplay. This includes:</p>
+                    <ul>
+                        <li>Staying in character while in-game</li>
+                        <li>Respecting the roleplay of other users</li>
+                        <li>Following server-specific roleplay rules and guidelines</li>
+                        <li>Using appropriate language and behavior for your character</li>
+                        <li>Not using out-of-character knowledge to gain in-game advantages</li>
+                    </ul>
+                    
+                    <h3>5.2 Communication</h3>
+                    <p>You agree not to use our Services, including our Discord server, in-game chat, or any other communication channels to:</p>
+                    <ul>
+                        <li>Harass, intimidate, or threaten other users</li>
+                        <li>Share personal or private information about other users</li>
+                        <li>Engage in hate speech or discriminatory language</li>
+                        <li>Advertise or promote other servers, services, or products without permission</li>
+                        <li>Spam or flood communication channels</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="content">6. User Content</h2>
+                <div class="terms-content">
+                    <p>Our Services may allow you to submit, upload, publish, or otherwise make available content, including but not limited to text, photographs, videos, or other material ("User Content").</p>
+                    
+                    <h3>6.1 Content Ownership</h3>
+                    <p>You retain ownership rights to your User Content. However, by submitting User Content to Grit City Roleplay, you grant us a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, distribute, prepare derivative works of, display, and perform the User Content in connection with our Services and our business operations, including for promoting and redistributing part or all of the Services.</p>
+                    
+                    <h3>6.2 Content Restrictions</h3>
+                    <p>You agree that you will not post, upload, or transmit any User Content that:</p>
+                    <ul>
+                        <li>Infringes any patent, trademark, trade secret, copyright, or other intellectual property rights of any party</li>
+                        <li>Contains any material that is defamatory, obscene, offensive, hateful, or otherwise objectionable</li>
+                        <li>Promotes sexually explicit material, violence, or discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age</li>
+                        <li>Violates the legal rights (including the right of privacy and publicity) of others</li>
+                        <li>Is likely to deceive any person</li>
+                        <li>Promotes illegal activity or advocating, promoting, or assisting any unlawful act</li>
+                        <li>Contains software viruses or any other computer code designed to interrupt, destroy, or limit the functionality of any computer software or hardware</li>
+                    </ul>
+                    
+                    <h3>6.3 Content Monitoring</h3>
+                    <p>We do not actively monitor User Content but reserve the right to review and remove any User Content that violates these Terms or that we find objectionable. We may also terminate or suspend access to our Services immediately, without prior notice or liability, for any reason, including if you breach these Terms.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="intellectual">7. Intellectual Property</h2>
+                <div class="terms-content">
+                    <p>The Services and their entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Grit City Roleplay, its licensors, or other providers of such material and are protected by United States and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+                    
+                    <h3>7.1 License to Use Services</h3>
+                    <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, and revocable license to access and use the Services for your personal, non-commercial use.</p>
+                    
+                    <h3>7.2 Restrictions</h3>
+                    <p>You agree not to:</p>
+                    <ul>
+                        <li>Reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any materials from our Services, except as permitted by these Terms</li>
+                        <li>Delete or alter any copyright, trademark, or other proprietary notices from copies of materials from our Services</li>
+                        <li>Access or use for any commercial purposes any part of the Services or any services or materials available through the Services</li>
+                    </ul>
+                    
+                    <h3>7.3 Trademarks</h3>
+                    <p>The Grit City Roleplay name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of Grit City Roleplay or its affiliates or licensors. You may not use such marks without our prior written permission.</p>
+                    
+                    <h3>7.4 Third-Party Intellectual Property</h3>
+                    <p>Grit City Roleplay is not affiliated with Rockstar Games, Take-Two Interactive, or Cfx.re (FiveM). All trademarks, registered trademarks, product names, and company names or logos mentioned on our Services are the property of their respective owners. Reference to any products, services, processes, or other information by trade name, trademark, manufacturer, supplier, or otherwise does not constitute or imply endorsement, sponsorship, or recommendation by us.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="purchases">8. Purchases and Payments</h2>
+                <div class="terms-content">
+                    <p>Our Services may offer the opportunity to purchase virtual goods, subscriptions, or other items ("VIP Purchases"). All payments are processed through Tebex or other payment processors identified on our VIP Store.</p>
+                    
+                    <h3>8.1 Payment Terms</h3>
+                    <p>By making a purchase through our Services, you agree to:</p>
+                    <ul>
+                        <li>Pay all fees and applicable taxes incurred by you or anyone using your account</li>
+                        <li>Provide current, complete, and accurate purchase and account information</li>
+                        <li>Promptly update your account and payment information in case of changes</li>
+                        <li>Recognize that payment processing may be subject to the terms and conditions of third-party payment processors</li>
+                    </ul>
+                    
+                    <h3>8.2 Virtual Currency and Items</h3>
+                    <p>Virtual currency and items:</p>
+                    <ul>
+                        <li>Are licensed, not sold, to you for use exclusively within our Services</li>
+                        <li>Have no cash value and cannot be exchanged for real money, goods, or services</li>
+                        <li>Cannot be transferred, traded, or sold outside of our Services</li>
+                        <li>May be altered, removed, or deleted at our discretion</li>
+                        <li>Are non-refundable except as expressly permitted in our Refund Policy</li>
+                    </ul>
+                    
+                    <h3>8.3 Pricing and Availability</h3>
+                    <p>We reserve the right to change prices for VIP Purchases at any time. We do not guarantee the availability of any virtual goods or services. All descriptions of virtual goods and services are subject to change at any time without notice, at our sole discretion.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="refunds">9. Refund Policy</h2>
+                <div class="terms-content">
+                    <p>All sales are final. Due to the digital nature of our VIP Purchases, we generally do not offer refunds except in limited circumstances.</p>
+                    
+                    <h3>9.1 Refund Eligibility</h3>
+                    <p>We may, at our sole discretion, consider refunds in the following circumstances:</p>
+                    <ul>
+                        <li>Technical issues prevent the delivery or use of your purchase</li>
+                        <li>Accidental purchase made by a minor without parental consent</li>
+                        <li>Unauthorized purchases from your account</li>
+                    </ul>
+                    
+                    <h3>9.2 Refund Requests</h3>
+                    <p>To request a refund, you must contact us within 7 days of your purchase with the following information:</p>
+                    <ul>
+                        <li>Your username and Discord ID</li>
+                        <li>Details of the purchase, including the transaction ID</li>
+                        <li>Reason for the refund request</li>
+                        <li>Any relevant evidence supporting your request</li>
+                    </ul>
+                    
+                    <h3>9.3 Refund Determination</h3>
+                    <p>All refund requests will be reviewed on a case-by-case basis. We reserve the right to deny any refund request that does not meet our criteria or that we suspect is fraudulent.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="modifications">10. Modifications to Service</h2>
+                <div class="terms-content">
+                    <p>We reserve the right to modify, suspend, or discontinue, temporarily or permanently, the Services or any part thereof, with or without notice. You agree that we will not be liable to you or to any third party for any modification, suspension, or discontinuance of the Services.</p>
+                    
+                    <h3>10.1 Server Updates and Maintenance</h3>
+                    <p>We regularly update and maintain our FiveM server to improve gameplay, fix bugs, add new features, or ensure compliance with FiveM requirements. During server maintenance or updates, the Services may be unavailable. We will attempt to provide advance notice of scheduled maintenance when possible, but cannot guarantee it.</p>
+                    
+                    <h3>10.2 Content Changes</h3>
+                    <p>Game content, including in-game activities, events, mechanics, vehicles, properties, jobs, or other features, may be added, modified, or removed at any time at our sole discretion. We are not liable for any impact these changes may have on your gameplay experience or in-game assets.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="termination">11. Termination</h2>
+                <div class="terms-content">
+                    <p>We may terminate or suspend your account and access to the Services immediately, without prior notice or liability, for any reason, including, without limitation, if you breach these Terms.</p>
+                    
+                    <h3>11.1 Effects of Termination</h3>
+                    <p>Upon termination:</p>
+                    <ul>
+                        <li>Your right to use the Services will immediately cease</li>
+                        <li>You will lose access to your account, character data, and any in-game assets</li>
+                        <li>You will not be entitled to any refund for purchases made</li>
+                    </ul>
+                    
+                    <h3>11.2 Survival</h3>
+                    <p>All provisions of these Terms which by their nature should survive termination shall survive, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="disclaimer">12. Disclaimer of Warranties</h2>
+                <div class="terms-content">
+                    <p>THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. GRIT CITY ROLEPLAY EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+                    
+                    <p>We do not warrant that:</p>
+                    <ul>
+                        <li>The Services will meet your requirements</li>
+                        <li>The Services will be uninterrupted, timely, secure, or error-free</li>
+                        <li>The results obtained from the use of the Services will be accurate or reliable</li>
+                        <li>The quality of any products, services, information, or other material purchased or obtained by you through the Services will meet your expectations</li>
+                        <li>Any errors in the Services will be corrected</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="limitation">13. Limitation of Liability</h2>
+                <div class="terms-content">
+                    <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL GRIT CITY ROLEPLAY, ITS AFFILIATES, OR THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:</p>
+                    
+                    <ul>
+                        <li>Your access to or use of or inability to access or use the Services</li>
+                        <li>Any conduct or content of any third party on the Services</li>
+                        <li>Any content obtained from the Services</li>
+                        <li>Unauthorized access, use, or alteration of your transmissions or content</li>
+                        <li>Loss of in-game progress, virtual currency, items, or other digital assets</li>
+                        <li>Server downtime, maintenance, or updates</li>
+                    </ul>
+                    
+                    <p>IN NO EVENT SHALL OUR TOTAL LIABILITY TO YOU FOR ALL CLAIMS EXCEED THE AMOUNT YOU HAVE PAID TO US FOR USE OF THE SERVICES DURING THE TWELVE (12) MONTHS PRIOR TO THE CLAIM.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="indemnification">14. Indemnification</h2>
+                <div class="terms-content">
+                    <p>You agree to defend, indemnify, and hold harmless Grit City Roleplay, its affiliates, and their respective officers, directors, employees, and agents from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) arising from:</p>
+                    
+                    <ul>
+                        <li>Your use of and access to the Services</li>
+                        <li>Your violation of any term of these Terms</li>
+                        <li>Your violation of any third-party right, including without limitation any copyright, property, or privacy right</li>
+                        <li>Any claim that your User Content caused damage to a third party</li>
+                    </ul>
+                    
+                    <p>This defense and indemnification obligation will survive these Terms and your use of the Services.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="disputes">15. Dispute Resolution</h2>
+                <div class="terms-content">
+                    <p>In the interest of resolving disputes between you and Grit City Roleplay in the most expedient and cost-effective manner, you and Grit City Roleplay agree to the following dispute resolution procedure:</p>
+                    
+                    <h3>15.1 Informal Resolution</h3>
+                    <p>Before filing a claim against Grit City Roleplay, you agree to attempt to resolve the dispute informally by contacting us. We will attempt to resolve the dispute informally by contacting you via email. If the dispute cannot be resolved informally within 30 days, either party may proceed with formal dispute resolution.</p>
+                    
+                    <h3>15.2 Binding Arbitration</h3>
+                    <p>Any dispute, controversy, or claim arising out of or relating to these Terms, including the formation, interpretation, breach, or termination thereof, including whether the claims asserted are arbitrable, will be referred to and finally determined by binding arbitration in accordance with the rules of the American Arbitration Association. The tribunal will consist of a single arbitrator. The place of arbitration will be Tennessee, USA. The language to be used in the arbitral proceedings will be English.</p>
+                    
+                    <h3>15.3 Class Action Waiver</h3>
+                    <p>YOU AND GRIT CITY ROLEPLAY AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="governing">16. Governing Law</h2>
+                <div class="terms-content">
+                    <p>These Terms shall be governed by and construed in accordance with the laws of the State of Tennessee, USA, without regard to its conflict of law principles. Any legal action or proceeding arising under these Terms shall be brought exclusively in the federal or state courts located in Tennessee, USA, and you hereby consent to personal jurisdiction and venue therein.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="severability">17. Severability</h2>
+                <div class="terms-content">
+                    <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="changes">18. Changes to Terms</h2>
+                <div class="terms-content">
+                    <p>We may revise these Terms at any time without notice. By using our Services, you agree to be bound by the current version of these Terms.</p>
+                    
+                    <p>It is your responsibility to check these Terms periodically for changes. Your continued use of the Services following the posting of revised Terms means that you accept and agree to the changes.</p>
+                </div>
+            </div>
+            
+            <div class="terms-section">
+                <h2 class="section-title" id="contact">19. Contact Information</h2>
+                <div class="terms-content">
+                    <p>If you have any questions about these Terms, please contact us at:</p>
+                    <p>Email: <a href="mailto:info@gritcityrp.com" target="_blank">Email Grit City Staff</a></p>
+                    <p>Discord: <a href="https://discord.gg/3tTMvj9DcA" target="_blank">Join Grit the City Discord</a></p>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <div class="single-row-icons">
+                    <a href="https://x.com/GritCityRP" class="social-icon"><i class="fa-brands fa-x"></i></a>
+                    <a href="https://discord.gg/3tTMvj9DcA" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@gritcityroleplay" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-mastodon"></i></a>
+                    <a href="https://GritCityRP.com/" class="social-icon"><i class="fas fa-link"></i></a>
+                    <a href="https://www.instagram.com/GritCityRoleplay" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grit City Roleplay. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="attributions.html" class="footer-link">Attributions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (document.querySelector('.sidebar').classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

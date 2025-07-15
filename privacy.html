@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Grit City Roleplay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        :root {
+            --primary-color: #9e1c1c;
+            --primary-dark: #7a1515;
+            --primary-light: #b92a2a;
+            --secondary-color: #1e1215;
+            --background-color: #0f0809;
+            --card-color: #1e1215;
+            --text-color: #f8fafc;
+            --border-color: #33151a;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+            --hover-color: #ca2020;
+        }
+        
+        .light-mode {
+            --primary-color: #ca2020;
+            --primary-dark: #9e1c1c;
+            --primary-light: #e63535;
+            --secondary-color: #f0f0f0;
+            --background-color: #ffffff;
+            --card-color: #f0f0f0;
+            --text-color: #1e1215;
+            --border-color: #dfdfdf;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.1rem;
+            padding-bottom: rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .server-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .server-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem;
+            margin-left: 250px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .page-description {
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Privacy Content */
+        .privacy-section {
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .privacy-content {
+            margin-bottom: 2rem;
+        }
+
+        .privacy-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-color);
+        }
+
+        .privacy-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .privacy-content ul, .privacy-content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .privacy-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .privacy-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+
+        .important-notice {
+            background-color: rgba(158, 28, 28, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .important-notice h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Last Updated */
+        .last-updated {
+            text-align: right;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icon {
+            display: inline-block;
+            color: var(--text-color);
+            font-size: 1.4rem;
+            margin: 0 3px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 100%;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .privacy-section {
+                padding: 1.5rem;
+            }
+        }
+
+       /* Mobile Menu Toggle */
+       .menu-toggle {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle i {
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="server-logo" style="width: 175px; height: 175px;">
+                    <img src="img/logo.png" alt="Grit City RP Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="rules.html" class="nav-link">
+                    <i class="fas fa-gavel"></i>
+                    <span>Rules</span>
+                </a>
+                <a href="http://15.204.254.116:3000/" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    <span>Tourist Map</span>
+                </a>
+                <a href="businesses.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Businesses</span>
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <i class="fas fa-cube"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="community.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="https://fiveodevelopment.tebex.io/category/webtemplate" class="nav-link">
+                    <i class="fas fa-store"></i>
+                    <span>VIP Store</span>
+                </a>
+                <a href="application.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Apply</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>&copy; 2025 Grit City Roleplay</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 class="page-title">Privacy Policy</h1>
+            <p class="page-description">This Privacy Policy outlines how Grit City Roleplay collects, uses, maintains, and discloses information collected from users of our website and FiveM server.</p>
+            
+            <div class="last-updated">Last Updated: May 14, 2025</div>
+
+            <!-- Important Notice -->
+            <div class="important-notice">
+                <h3>Important Notice</h3>
+                <p>By using Grit City Roleplay's website, FiveM server, Discord, or any associated services, you consent to the collection and use of information as described in this Privacy Policy. If you do not agree with our policies and practices, please do not use our services.</p>
+            </div>
+            
+            <!-- Privacy Content -->
+            <div class="privacy-section">
+                <h2 class="section-title" id="introduction">1. Introduction</h2>
+                <div class="privacy-content">
+                    <p>Grit City Roleplay ("we," "us," or "our") is committed to protecting the privacy of our users. This Privacy Policy applies to the Grit City Roleplay website, FiveM server, Discord server, and all related services (collectively, the "Services") and explains how we collect, use, disclose, and safeguard your information.</p>
+                    
+                    <p>We take your privacy seriously and will only use your personal information as described in this Privacy Policy. By accessing or using our Services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="collection">2. Information We Collect</h2>
+                <div class="privacy-content">
+                    <p>We collect several types of information from and about users of our Services, including:</p>
+                    
+                    <h3>2.1 Information You Provide to Us</h3>
+                    <ul>
+                        <li><strong>Account Information:</strong> When you register for an account, we collect information such as your username, email address, Discord ID, and password.</li>
+                        <li><strong>Profile Information:</strong> Information you provide in your user profile, such as profile pictures, biography, or social media links.</li>
+                        <li><strong>Communications:</strong> Information you provide when you contact us for support, report issues, or communicate with our staff or other users.</li>
+                        <li><strong>Payment Information:</strong> When you make purchases through our VIP Store, payment information is collected by our third-party payment processor (Tebex). We do not directly collect or store payment details such as credit card numbers.</li>
+                        <li><strong>Application Information:</strong> Information you provide when applying to join our server, including answers to application questions, character backstories, or previous roleplay experience.</li>
+                    </ul>
+                    
+                    <h3>2.2 Information We Collect Automatically</h3>
+                    <ul>
+                        <li><strong>Technical Information:</strong> IP address, device information, browser type and version, operating system, and other technical information about your device and internet connection.</li>
+                        <li><strong>Gameplay Data:</strong> In-game activities, character interactions, chat logs, gameplay statistics, playtime, and other data related to your use of our FiveM server.</li>
+                        <li><strong>Server Logs:</strong> Connection and disconnection times, server errors, and other technical logs that help us maintain and improve our Services.</li>
+                        <li><strong>Usage Information:</strong> How you interact with our website and Services, including pages visited, links clicked, time spent on pages, and navigation patterns.</li>
+                    </ul>
+                    
+                    <h3>2.3 Information from Third Parties</h3>
+                    <ul>
+                        <li><strong>Discord Integration:</strong> When you connect your Discord account, we receive information such as your Discord username, ID, and avatar.</li>
+                        <li><strong>FiveM Identity:</strong> Information associated with your FiveM account, including your FiveM ID and license.</li>
+                        <li><strong>Social Media:</strong> If you interact with our social media pages or share content from our Services, we may receive information from those social media platforms.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="usage">3. How We Use Your Information</h2>
+                <div class="privacy-content">
+                    <p>We use the information we collect for various purposes, including to:</p>
+                    
+                    <ul>
+                        <li><strong>Provide and Maintain our Services:</strong> Create and manage user accounts, deliver in-game features and functionality, and ensure the proper functioning of our Services.</li>
+                        <li><strong>Improve and Develop our Services:</strong> Analyze usage patterns, identify areas for improvement, develop new features, and enhance the user experience.</li>
+                        <li><strong>Ensure Safety and Security:</strong> Monitor and enforce compliance with our Terms of Service and server rules, prevent cheating and abuse, and protect the integrity of our Services.</li>
+                        <li><strong>Personalize User Experience:</strong> Tailor content and features to individual users, remember user preferences, and provide a consistent experience across our Services.</li>
+                        <li><strong>Communication:</strong> Send administrative notices, updates, and support messages; respond to inquiries; and provide important information about our Services.</li>
+                        <li><strong>Process Transactions:</strong> Complete purchases, deliver virtual goods, and maintain records of transactions.</li>
+                        <li><strong>Community Management:</strong> Facilitate interaction between users, moderate content, and maintain a positive community environment.</li>
+                        <li><strong>Legal Compliance:</strong> Comply with applicable laws, regulations, and legal processes, and protect our rights, privacy, safety, or property, and that of our users or the public.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="sharing">4. Sharing Your Information</h2>
+                <div class="privacy-content">
+                    <p>We may share your information in the following circumstances:</p>
+                    
+                    <h3>4.1 With Your Consent</h3>
+                    <p>We may share your information when you give us explicit consent to do so.</p>
+                    
+                    <h3>4.2 Service Providers</h3>
+                    <p>We may share information with third-party service providers that perform services on our behalf, such as:</p>
+                    <ul>
+                        <li>Payment processors (e.g., Tebex)</li>
+                        <li>Hosting providers</li>
+                        <li>Analytics providers</li>
+                        <li>Customer support services</li>
+                    </ul>
+                    <p>These service providers are only permitted to use your information to provide services to us and are required to maintain the confidentiality of your information.</p>
+                    
+                    <h3>4.3 Within Our Community</h3>
+                    <p>Certain information, such as your username, in-game character information, and public activity, may be visible to other users within our community.</p>
+                    
+                    <h3>4.4 Legal Requirements</h3>
+                    <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency). We may also disclose your information to:</p>
+                    <ul>
+                        <li>Enforce our Terms of Service or other agreements</li>
+                        <li>Protect the rights, property, or safety of Grit City Roleplay, our users, or others</li>
+                        <li>Prevent or investigate possible wrongdoing in connection with our Services</li>
+                    </ul>
+                    
+                    <h3>4.5 Business Transfers</h3>
+                    <p>If Grit City Roleplay is involved in a merger, acquisition, or asset sale, your information may be transferred as part of that transaction. We will notify you via email and/or a prominent notice on our website of any change in ownership or uses of your information.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="cookies">5. Cookies and Tracking Technologies</h2>
+                <div class="privacy-content">
+                    <p>We use cookies and similar tracking technologies to collect and track information about your interactions with our website.</p>
+                    
+                    <h3>5.1 Types of Cookies We Use</h3>
+                    <ul>
+                        <li><strong>Essential Cookies:</strong> Necessary for the operation of our website and Services. These enable core functionality such as security, account management, and remembering user preferences.</li>
+                        <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website by collecting and reporting information anonymously.</li>
+                        <li><strong>Functionality Cookies:</strong> Enable us to remember choices you make and provide enhanced, personalized features.</li>
+                        <li><strong>Performance Cookies:</strong> Collect information about how visitors use our website, such as which pages they visit most often.</li>
+                    </ul>
+                    
+                    <h3>5.2 Your Cookie Choices</h3>
+                    <p>Most web browsers allow you to control cookies through their settings. You can usually set your browser to refuse all or some browser cookies, or to alert you when cookies are being sent. However, if you disable or refuse cookies, please note that some parts of the Services may be inaccessible or not function properly.</p>
+                    
+                    <h3>5.3 Do Not Track Signals</h3>
+                    <p>We currently do not respond to "Do Not Track" signals or similar mechanisms transmitted by web browsers.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="third-party">6. Third-Party Services</h2>
+                <div class="privacy-content">
+                    <p>Our Services may include links to third-party websites, services, or content that are not owned or controlled by Grit City Roleplay. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party websites or services.</p>
+                    
+                    <h3>6.1 Payment Processors</h3>
+                    <p>When you make purchases through our VIP Store, your payment information is collected and processed by Tebex, our third-party payment processor. Their use of your information is governed by their privacy policy. We encourage you to review Tebex's privacy policy before making a purchase.</p>
+                    
+                    <h3>6.2 FiveM</h3>
+                    <p>Our server operates on the FiveM platform, which is developed and maintained by Cfx.re. When you connect to our FiveM server, certain information may be collected by Cfx.re according to their privacy policy.</p>
+                    
+                    <h3>6.3 Analytics Services</h3>
+                    <p>We may use third-party analytics services, such as Google Analytics, to help us understand how users engage with our website. These services may use cookies and similar technologies to collect and analyze information about your use of our website.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="discord">7. Discord Integration</h2>
+                <div class="privacy-content">
+                    <p>Our Services integrate with Discord for community management, authentication, and communication purposes.</p>
+                    
+                    <h3>7.1 Discord OAuth</h3>
+                    <p>When you connect your Discord account to our Services, we use the Discord OAuth2 protocol to authenticate your identity and access certain information from your Discord account, such as your username, Discord ID, and avatar. This integration helps us verify your identity and streamline the login process.</p>
+                    
+                    <h3>7.2 Discord Bot</h3>
+                    <p>We may operate a Discord bot that collects and processes information within our Discord server. The bot may collect information such as:</p>
+                    <ul>
+                        <li>Messages sent in specific channels</li>
+                        <li>Commands issued to the bot</li>
+                        <li>Voice channel activity</li>
+                        <li>Role and permission changes</li>
+                    </ul>
+                    <p>This information is used to provide community features, enforce server rules, and enhance the user experience within our Discord community.</p>
+                    
+                    <h3>7.3 Discord Data Sharing</h3>
+                    <p>Information may be shared between our Services and our Discord server to:</p>
+                    <ul>
+                        <li>Sync roles and permissions</li>
+                        <li>Display in-game information in Discord</li>
+                        <li>Verify account ownership</li>
+                        <li>Facilitate communication between platforms</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="data-security">8. Data Security</h2>
+                <div class="privacy-content">
+                    <p>We implement reasonable security measures to protect your personal information from unauthorized access, use, alteration, or disclosure. However, no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+                    
+                    <p>Our security measures include:</p>
+                    <ul>
+                        <li>Using secure, encrypted connections (HTTPS) for our website</li>
+                        <li>Storing passwords in a hashed and salted format</li>
+                        <li>Implementing access controls to limit who can access user data</li>
+                        <li>Regular security assessments and updates</li>
+                        <li>Staff training on data protection practices</li>
+                    </ul>
+                    
+                    <p>While we strive to protect your personal information, we cannot guarantee the security of any information you transmit to us. You are responsible for maintaining the security of your account credentials and should notify us immediately of any unauthorized use of your account or other security breaches.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="data-retention">9. Data Retention</h2>
+                <div class="privacy-content">
+                    <p>We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.</p>
+                    
+                    <h3>9.1 Account Information</h3>
+                    <p>We retain your account information for as long as your account is active or as needed to provide you with our Services. If you delete your account or request that we delete your information, we will delete your account information within 30 days, except for information that we are required to retain for legitimate business or legal purposes.</p>
+                    
+                    <h3>9.2 Server Logs and Gameplay Data</h3>
+                    <p>Server logs and gameplay data may be retained for varying periods:</p>
+                    <ul>
+                        <li>Technical logs for server performance and security: 30-90 days</li>
+                        <li>Chat logs and player interactions: Up to 180 days</li>
+                        <li>Character progression and in-game assets: For the duration of the character's existence</li>
+                        <li>Server backups: Up to 30 days</li>
+                    </ul>
+                    
+                    <h3>9.3 Anonymized Data</h3>
+                    <p>We may retain anonymized, aggregated data indefinitely for analytical purposes and to improve our Services.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="childrens-privacy">10. Children's Privacy</h2>
+                <div class="privacy-content">
+                    <p>Our Services are not intended for children under the age of 16, and we do not knowingly collect personal information from children under 16. If you are a parent or guardian and you believe your child has provided us with personal information, please contact us. If we become aware that we have collected personal information from a child under 16 without verification of parental consent, we will take steps to remove that information from our servers.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="international">11. International Data Transfers</h2>
+                <div class="privacy-content">
+                    <p>Grit City Roleplay is operated from the United States. If you are accessing our Services from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States or other countries where our servers are located. By using our Services, you consent to the transfer of your information to countries outside your country of residence, which may have different data protection rules than those in your country.</p>
+                    
+                    <p>If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, we comply with applicable data protection laws when transferring your personal information outside these regions. We implement appropriate safeguards to ensure your information receives an adequate level of protection.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="your-rights">12. Your Rights</h2>
+                <div class="privacy-content">
+                    <p>Depending on your location, you may have certain rights regarding your personal information. These may include:</p>
+                    
+                    <h3>12.1 Access and Information</h3>
+                    <p>You have the right to request access to the personal information we hold about you and information about how we process it.</p>
+                    
+                    <h3>12.2 Correction</h3>
+                    <p>You have the right to request that we correct inaccurate or incomplete personal information about you.</p>
+                    
+                    <h3>12.3 Deletion</h3>
+                    <p>You have the right to request that we delete your personal information in certain circumstances, such as when it is no longer necessary for the purposes for which it was collected.</p>
+                    
+                    <h3>12.4 Restriction of Processing</h3>
+                    <p>You have the right to request that we restrict the processing of your personal information in certain circumstances, such as when you contest the accuracy of the information.</p>
+                    
+                    <h3>12.5 Data Portability</h3>
+                    <p>You have the right to receive your personal information in a structured, commonly used, and machine-readable format and to transmit that information to another controller.</p>
+                    
+                    <h3>12.6 Objection</h3>
+                    <p>You have the right to object to the processing of your personal information in certain circumstances, such as when the processing is based on legitimate interests or for direct marketing purposes.</p>
+                    
+                    <h3>12.7 Withdrawal of Consent</h3>
+                    <p>If we rely on your consent to process your personal information, you have the right to withdraw your consent at any time.</p>
+                    
+                    <h3>12.8 How to Exercise Your Rights</h3>
+                    <p>To exercise any of these rights, please contact us using the information provided in the "Contact Us" section. We will respond to your request within 30 days. Please note that we may need to verify your identity before processing your request.</p>
+                    
+                    <h3>12.9 Complaints</h3>
+                    <p>If you have concerns about our processing of your personal information, you have the right to make a complaint to the data protection authority in your jurisdiction.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="policy-changes">13. Changes to This Privacy Policy</h2>
+                <div class="privacy-content">
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of the policy.</p>
+                    
+                    <p>We encourage you to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page. Your continued use of our Services after we post changes to the Privacy Policy constitutes your acceptance of those changes.</p>
+                    
+                    <p>For significant changes to this Privacy Policy, we will make reasonable efforts to provide more prominent notice, such as an email notification or an in-game announcement.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title" id="contact-us">14. Contact Us</h2>
+                <div class="privacy-content">
+                    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:</p>
+                    
+                    <p>Email: <a href="mailto:info@gritcityrp.com" target="_blank">Email Grit City Staff</a></p>
+                    <p>Discord: <a href="https://discord.gg/3tTMvj9DcA" target="_blank">Join Grit the City Discord</a></p>
+                    
+                    <p>We will make every effort to respond to your inquiry in a timely manner and address your concerns appropriately.</p>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <div class="single-row-icons">
+                    <a href="https://x.com/GritCityRP" class="social-icon"><i class="fa-brands fa-x"></i></a>
+                    <a href="https://discord.gg/3tTMvj9DcA" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@gritcityroleplay" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-mastodon"></i></a>
+                    <a href="https://GritCityRP.com/" class="social-icon"><i class="fas fa-link"></i></a>
+                    <a href="https://www.instagram.com/GritCityRoleplay" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grit City Roleplay. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="attributions.html" class="footer-link">Attributions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (document.querySelector('.sidebar').classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

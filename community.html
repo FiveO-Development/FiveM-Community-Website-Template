@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMMUNITY MEMBERS - GCRP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        :root {
+            --primary-color: #9e1c1c;
+            --primary-dark: #7a1515;
+            --primary-light: #b92a2a;
+            --secondary-color: #1e1215;
+            --background-color: #0f0809;
+            --card-color: #1e1215;
+            --text-color: #f8fafc;
+            --border-color: #33151a;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+            --hover-color: #ca2020;
+            --modal-bg: rgba(15, 8, 9, 0.9);
+        }
+        
+        .light-mode {
+            --primary-color: #ca2020;
+            --primary-dark: #9e1c1c;
+            --primary-light: #e63535;
+            --secondary-color: #f0f0f0;
+            --background-color: #ffffff;
+            --card-color: #f0f0f0;
+            --text-color: #1e1215;
+            --border-color: #dfdfdf;
+            --modal-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.0rem;
+            padding-bottom: rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .server-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .server-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem;
+            margin-left: 250px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .page-description {
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Member Categories */
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .category-filter {
+            background-color: var(--card-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-filter:hover, .category-filter.active {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .category-filter i {
+            font-size: 1rem;
+        }
+
+        /* Member Grid */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .member-card {
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .member-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            top: 10px;
+            right: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover .member-icon {
+            transform: scale(1.1);
+        }
+
+        .member-details {
+            padding: 1.5rem;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .member-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .view-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-more:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--modal-bg);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+        }
+
+        .modal-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-footer {
+            text-align: right;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .modal-footer button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-footer button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .single-row-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            display: inline-block;
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin: 0 3.0px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 100%;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .member-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle i {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        .auth-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .discord-login {
+            background: #5865F2;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .discord-login:hover {
+            background: #4752C4;
+            transform: translateY(-2px);
+        }
+
+        .submission-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-color);
+            border-radius: 0.75rem;
+            display: none;
+        }
+
+        .submission-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.25rem;
+            color: var(--text-color);
+        }
+
+        .moderation-panel {
+            background: var(--primary-dark);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="server-logo" style="width: 175px; height: 175px;">
+                    <img src="img/logo.png" alt="Grit City RP Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="rules.html" class="nav-link">
+                    <i class="fas fa-gavel"></i>
+                    <span>Rules</span>
+                </a>
+                <a href="http://15.204.254.116:3000/" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    <span>Tourist Map</span>
+                </a>
+                <a href="businesses.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Businesses</span>
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <i class="fas fa-cube"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="community.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="https://fiveodevelopment.tebex.io/category/webtemplate" class="nav-link">
+                    <i class="fas fa-store"></i>
+                    <span>VIP Store</span>
+                </a>
+                <a href="application.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Apply</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>&copy; 2025 Grit City Roleplay</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 class="page-title">Community Members</h1>
+            <p class="page-description">Meet the diverse citizens who bring Grit City to life. From dedicated staff members to talented content creators, law enforcement officers to business owners, these individuals make our roleplay community vibrant and engaging.</p>
+            
+            <!-- Add Auth Section -->
+            <div class="auth-section">
+                <a href="/api/auth/discord" class="discord-login">
+                    <i class="fab fa-discord"></i>
+                    <span>Login with Discord</span>
+                </a>
+            </div>
+
+            <!-- Add Submission Form -->
+            <form id="submissionForm" class="submission-form">
+                <h2 style="margin-bottom: 1.5rem;">Submit Your Profile</h2>
+                <div class="form-group">
+                    <label>Character Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Role/Title</label>
+                    <input type="text" name="role" required>
+                </div>
+                <div class="form-group">
+                    <label>Bio Description</label>
+                    <textarea name="description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Profile Image</label>
+                    <input type="file" name="image" accept="image/*" required>
+                </div>
+                <button type="submit" class="view-more">Submit Profile</button>
+            </form>
+
+            <!-- Add Moderation Panel -->
+            <div class="moderation-panel">
+                <h2>Pending Submissions</h2>
+                <div id="pendingSubmissions"></div>
+            </div>
+
+            <!-- Member Categories -->
+            <div class="category-filters">
+                <button class="category-filter active" data-category="all">
+                    <i class="fas fa-star"></i>
+                    <span>All Members</span>
+                </button>
+                <button class="category-filter" data-category="staff">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Staff</span>
+                </button>
+                <button class="category-filter" data-category="vip">
+                    <i class="fas fa-gem"></i>
+                    <span>VIP Members</span>
+                </button>
+                <button class="category-filter" data-category="creator">
+                    <i class="fas fa-video"></i>
+                    <span>Content Creators</span>
+                </button>
+                <button class="category-filter" data-category="gang">
+                    <i class="fas fa-skull"></i>
+                    <span>Gang Members</span>
+                </button>
+                <button class="category-filter" data-category="business">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Business Owners</span>
+                </button>
+                <button class="category-filter" data-category="leo">
+                    <i class="fas fa-badge-sheriff"></i>
+                    <span>Law Enforcement</span>
+                </button>
+                <button class="category-filter" data-category="medical">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Medical Personnel</span>
+                </button>
+                <button class="category-filter" data-category="fire">
+                    <i class="fas fa-fire-extinguisher"></i>
+                    <span>Fire Fighters</span>
+                </button>
+                <button class="category-filter" data-category="gov">
+                    <i class="fas fa-landmark"></i>
+                    <span>Government</span>
+                </button>
+                <button class="category-filter" data-category="attorney">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Attorneys</span>
+                </button>
+                <button class="category-filter" data-category="judge">
+                    <i class="fas fa-gavel"></i>
+                    <span>Judges</span>
+                </button>
+            </div>
+            
+            <!-- Member Grid -->
+            <div class="member-grid">
+                <!-- Member Card 1 -->
+                <div class="member-card" data-category="staff" data-modal="marcussmart-modal">
+                    <div class="member-image">
+                        <img src="/uploads/filename.jpg" alt="Marcus Smart">
+                        <div class="member-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Marcus Smart</h3>
+                        <p class="member-role">Grit City Founder</p>
+                        <p class="member-description">Founder of Grit City RP and Director, ensuring the server runs smoothly for everyone.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Member Card 2 -->
+                <div class="member-card" data-category="leo" data-modal="officermills-modal">
+                    <div class="member-image">
+                        <img src="img/OMills.png" alt="Officer Mills">
+                        <div class="member-icon">
+                            <i class="fas fa-shield"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Officer Mills</h3>
+                        <p class="member-role">EAGLE-1 Instructor</p>
+                        <p class="member-description">Leading the SASP's EAGLE-1 Aerial Support Division with distinction and a commitment to fair and safe policing practices both in the air and on the ground.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Member Card 3 -->
+                <div class="member-card" data-category="business" data-modal="marcus-winters-modal">
+                    <div class="member-image">
+                        <img src="/uploads/filename.jpg" alt="Marcus Winters">
+                        <div class="member-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Marcus Winters</h3>
+                        <p class="member-role">Owner of The Blackstone</p>
+                        <p class="member-description">Entrepreneur running the most successful nightclub in Grit City.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Member Card 4 -->
+                <div class="member-card" data-category="creator" data-modal="elena-gomez-modal">
+                    <div class="member-image">
+                        <img src="/uploads/filename.jpg" alt="Elena Gomez">
+                        <div class="member-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Elena Gomez</h3>
+                        <p class="member-role">Content Creator</p>
+                        <p class="member-description">Renowned streamer bringing Grit City stories to thousands of viewers daily.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Member Card 5 -->
+                <div class="member-card" data-category="medical" data-modal="dr-james-park-modal">
+                    <div class="member-image">
+                        <img src="/uploads/filename.jpg" alt="Dr. James Park">
+                        <div class="member-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Dr. James Park</h3>
+                        <p class="member-role">Chief of Medicine</p>
+                        <p class="member-description">Head of Grit City Medical Center, saving lives for over 15 years.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Member Card 6 -->
+                <div class="member-card" data-category="gang" data-modal="ray-diaz-modal">
+                    <div class="member-image">
+                        <img src="/uploads/filename.jpg" alt="Ray Diaz">
+                        <div class="member-icon">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Ray Diaz</h3>
+                        <p class="member-role">Leader of The Vultures</p>
+                        <p class="member-description">Mysterious figure controlling the underground racing scene in Grit City.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Member Card 7 -->
+                <div class="member-card" data-category="judge" data-modal="judge-hoffman-modal">
+                    <div class="member-image">
+                        <img src="/uploads/filename.jpg" alt="Judge Hoffman">
+                        <div class="member-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">Judge Leonard Hoffman</h3>
+                        <p class="member-role">Superior Court Judge</p>
+                        <p class="member-description">Presiding over Grit City's most high-profile criminal cases with impartiality.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>    
+                
+            </main>
+            <!-- Footer -->
+            <div class="footer">
+                <div class="single-row-icons">
+                    <a href="https://x.com/GritCityRP" class="social-icon"><i class="fa-brands fa-x"></i></a>
+                    <a href="https://discord.gg/3tTMvj9DcA" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@gritcityroleplay" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-mastodon"></i></a>
+                    <a href="https://GritCityRP.com/" class="social-icon"><i class="fas fa-link"></i></a>
+                    <a href="https://www.instagram.com/GritCityRoleplay" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grit City Roleplay. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="attributions.html" class="footer-link">Attributions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </footer>
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Modals -->
+    <!-- Alex Reed Modal -->
+    <div class="modal" id="marcussmart-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Marcus Smart</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img src="/uploads/filename.jpg" alt="Marcus Smart" class="modal-image">
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Background</h3>
+                <p>Marcus Smart founded Grit City Roleplay early on in 2025 after years of experience as both a player and administrator on various FiveM servers. With a background culinary arts and dipping his hand in webpage design, Marcus has helped build the economy and systems that make Grit City a unique roleplay experience.</p>
+                
+                <p>As Director, Marcus oversees all aspects of server operations, community management, and staff coordination. Their dedication to fair play and immersive roleplay will ensure that Grit City will be one of the fastest-growing communities in the FiveM ecosystem.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Character Information</h3>
+                <p>In-game, Marcus Smart plays as Chief Justice, a former tech entrepreneur who moved to Grit City to escape the corporate world. Marcus now runs a private cybersecurity consultancy, helping businesses protect their digital assets while maintaining connections to both the legal and underground worlds of Grit City.</p>
+                
+                <ul>
+                    <li><strong>Age:</strong> 34</li>
+                    <li><strong>Occupation:</strong> Cybersecurity Consultant</li>
+                    <li><strong>Phone:</strong> 555-0142</li>
+                    <li><strong>Residence:</strong> Downtown Penthouse</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Staff Responsibilities</h3>
+                <p>As a server administrator, Marcus Smart handles:</p>
+                
+                <ul>
+                    <li>Server development and technical infrastructure</li>
+                    <li>Staff recruitment and training</li>
+                    <li>Community conflict resolution</li>
+                    <li>Major event planning and coordination</li>
+                    <li>Resource management and optimization</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Contact Information</h3>
+                <p>Community members can reach Marcus Smart for server-related questions or issues through:</p>
+                
+                <ul>
+                    <li>Discord:@daaverageguy</li>
+                    <li>Email: info@gritcityrp.com</li>
+                    <li>Server Ticket System (preferred method)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+</div>
+    
+<div class="modal" id="officermills-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Officer Mills</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img src="img/OMills.png" alt="Officer Mills" class="modal-image">
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Background</h3>
+                <p>Officer Mills rose through the ranks of the Grit City Police Department through hard work and an unwavering commitment to justice. After serving as a beat cop, detective, and captain, he was appointed Senior Development Administrator at Grit City Roleplay, taking a key leadership role in the server's growth and evolution.</p>
+                
+                <p>Known for his detailed approach to development, Officer Mills has implemented innovative systems, technical improvements, and immersive features that have enhanced the roleplay experience throughout the city.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Character Information</h3>
+                <p>Officer Mills plays as Jason Mills, the owner of San Andreas Flight Academy, the newest branch of Government in Grit City. The Flight Academy handles all Federal Aviation responsibilities within the state, bringing a new dimension to the city's infrastructure and roleplay opportunities.</p>
+                
+                <ul>
+                    <li><strong>Age:</strong> 36</li>
+                    <li><strong>Occupation:</strong> ODirector, San Andreas Flight Academy</li>
+                    <li><strong>Phone:</strong> 555-****</li>
+                    <li><strong>Residence:</strong> Harmony Heights</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Department Vision</h3>
+                <p>Under Officer Mills's leadership, the San Andreas Flight Academy focuses on:</p>
+                
+                <ul>
+                    <li>Professional aviation training programs</li>
+                    <li>Air traffic control and regulation</li>
+                    <li>Emergency response flight services</li>
+                    <li>Certification of pilots and aircraft</li>
+                    <li>Integration of flight systems with city infrastructure</li>
+                </ul>
+                
+                <p>His motto for the Academy is "Excellence in the Skies, Safety on the Ground."</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+</div>
+    
+    <!-- Marcus Winters Modal -->
+    <div class="modal" id="marcus-winters-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Marcus Winters</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="/uploads/filename.jpg" alt="Marcus Winters" class="modal-image">
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Background</h3>
+                    <p>Marcus Winters arrived in Grit City five years ago with nothing but ambition and a small inheritance from his grandfather. Within a year, he transformed a rundown warehouse into The Blackstone, now the most exclusive nightclub and entertainment venue in the city.</p>
+                    
+                    <p>Known for his charm, business acumen, and keen eye for talent, Marcus has expanded his empire to include The Blackstone Lounge, Blackstone Records, and a high-end catering service. His establishments are known for their impeccable service, cutting-edge entertainment, and strict security.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Character Information</h3>
+                    <p>While Marcus presents a polished, sophisticated image to the public, rumors about his past and connections persist. Some say he has ties to organized crime families on the East Coast, while others believe he's a confidential informant for federal authorities. Marcus neither confirms nor denies these rumors, using the mystery to enhance his enigmatic persona.</p>
+                    
+                    <ul>
+                        <li><strong>Age:</strong> 36</li>
+                        <li><strong>Occupation:</strong> Entrepreneur & Nightclub Owner</li>
+                        <li><strong>Phone:</strong> 555-2269</li>
+                        <li><strong>Residence:</strong> Vinewood Hills Mansion</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Business Portfolio</h3>
+                    <p>Marcus's business interests include:</p>
+                    
+                    <ul>
+                        <li><strong>The Blackstone</strong> - Premium nightclub featuring international DJs</li>
+                        <li><strong>The Blackstone Lounge</strong> - Upscale jazz and cocktail venue</li>
+                        <li><strong>Blackstone Records</strong> - Independent music label focused on electronic and hip-hop artists</li>
+                        <li><strong>Winterstone Catering</strong> - Luxury event catering service</li>
+                        <li><strong>Minority investments in various restaurants and retail businesses throughout Grit City</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Elena Gomez Modal -->
+    <div class="modal" id="elena-gomez-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Elena Gomez</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="/uploads/filename.jpg" alt="Elena Gomez" class="modal-image">
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Background</h3>
+                    <p>Elena Gomez started her content creation journey as a variety streamer before discovering roleplay gaming. After joining Grit City RP during its first month, her charismatic personality and storytelling abilities quickly gained her a devoted following on various streaming platforms.</p>
+                    
+                    <p>With over 500,000 followers across platforms, Elena is now one of the most recognized content creators in the FiveM community. Her cinematic approach to roleplay, featuring character development and intricate storylines, has helped bring new players to Grit City and elevate the server's reputation.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Character Information</h3>
+                    <p>In Grit City, Elena plays Isabella "Izzy" Reyes, an ambitious journalist working for the Grit City Chronicle. Izzy is known for her investigative reporting on corruption, criminal organizations, and the inner workings of government agencies, often putting herself in danger to uncover the truth.</p>
+                    
+                    <ul>
+                        <li><strong>Age:</strong> 29</li>
+                        <li><strong>Occupation:</strong> Investigative Journalist</li>
+                        <li><strong>Phone:</strong> 555-4721</li>
+                        <li><strong>Residence:</strong> Alta Street Apartment</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Content Platforms</h3>
+                    <p>You can find Elena's Grit City RP content on:</p>
+                    
+                    <ul>
+                        <li><strong>Twitch:</strong> ElenaGPlays</li>
+                        <li><strong>YouTube:</strong> Elena Gomez RP</li>
+                        <li><strong>Twitter:</strong> @ElenaGRP</li>
+                        <li><strong>Instagram:</strong> @ElenaGomezRP</li>
+                        <li><strong>TikTok:</strong> @ElenaGomezRP</li>
+                    </ul>
+                    
+                    <p>She streams Grit City RP content Monday through Friday from 7 PM to 11 PM EST.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dr. James Park Modal -->
+    <div class="modal" id="dr-james-park-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Dr. James Park</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="/uploads/filename.jpg" alt="Dr. James Park" class="modal-image">
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Background</h3>
+                    <p>Dr. James Park has been a fixture at Grit City Medical Center for over 15 years, working his way up from resident to Chief of Medicine. Educated at Johns Hopkins Medical School, Dr. Park chose to practice in Grit City due to its unique challenges and the opportunity to make a real difference in an underserved community.</p>
+                    
+                    <p>Respected by colleagues and patients alike, Dr. Park has transformed GCMC into a state-of-the-art facility capable of handling everything from routine care to major trauma. His trauma center protocol has become a model studied by hospitals across the region.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Character Information</h3>
+                    <p>Behind his professional demeanor, James carries the weight of a personal tragedy. His wife was killed in a hit-and-run accident six years ago, leaving him to raise their daughter alone. This experience has given him profound empathy for victims of violence and a deeply personal stake in improving emergency medical services in the city.</p>
+                    
+                    <ul>
+                        <li><strong>Age:</strong> 45</li>
+                        <li><strong>Occupation:</strong> Chief of Medicine</li>
+                        <li><strong>Phone:</strong> 555-9118</li>
+                        <li><strong>Residence:</strong> Mirror Park</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Medical Specialization</h3>
+                    <p>Dr. Park specializes in:</p>
+                    
+                    <ul>
+                        <li>Emergency Medicine</li>
+                        <li>Trauma Surgery</li>
+                        <li>Hospital Administration</li>
+                        <li>Disaster Response Protocols</li>
+                    </ul>
+                    
+                    <p>He also lectures part-time at Grit City University's Medical School and runs a free clinic in the South Side district once a month.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ray Diaz Modal -->
+    <div class="modal" id="ray-diaz-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Ray Diaz</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="/uploads/filename.jpg" alt="Ray Diaz" class="modal-image">
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Background</h3>
+                    <p>Ray Diaz emerged from the shadows of Grit City's underground racing scene three years ago, quickly establishing himself as a force to be reckoned with. After winning a series of high-stakes street races, he formed The Vultures, a tight-knit crew of street racers, mechanics, and fixers who now control most of the illegal racing operations in the city.</p>
+                    
+                    <p>Known for his unmatched driving skills and strategic mind, Ray has transformed The Vultures from a simple racing crew into a sophisticated criminal organization with interests in car theft, parts smuggling, and underground gambling.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Character Information</h3>
+                    <p>Ray's past remains largely a mystery, with rumors suggesting everything from a former professional racer fallen from grace to an undercover federal agent gone rogue. What's known for certain is his code of honor—The Vultures operate with strict rules against violence toward civilians, and Ray has been known to enforce these rules ruthlessly within his organization.</p>
+                    
+                    <ul>
+                        <li><strong>Age:</strong> 32</li>
+                        <li><strong>Occupation:</strong> Owner of "Diaz Customs" (Legitimate Business Front)</li>
+                        <li><strong>Phone:</strong> 555-3890</li>
+                        <li><strong>Residence:</strong> La Mesa Warehouse (Converted)</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">The Vultures Organization</h3>
+                    <p>Under Ray's leadership, The Vultures have established:</p>
+                    
+                    <ul>
+                        <li><strong>Diaz Customs</strong> - Legitimate auto shop specializing in high-performance vehicles</li>
+                        <li><strong>Weekly underground racing circuits</strong> with sophisticated lookout systems</li>
+                        <li><strong>Vehicle acquisition network</strong> specializing in exotic and rare cars</li>
+                        <li><strong>Connections with international parts smugglers</strong> bringing in hard-to-find components</li>
+                        <li><strong>A respected reputation</strong> for fair dealings, even in criminal circles</li>
+                    </ul>
+                    
+                    <p>Despite multiple investigations, law enforcement has struggled to build a case against Ray, as he maintains plausible deniability through layers of associates and rarely participates directly in criminal activities.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Judge Hoffman Modal -->
+    <div class="modal" id="judge-hoffman-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Judge Leonard Hoffman</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="/uploads/filename.jpg" alt="Judge Hoffman" class="modal-image">
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Background</h3>
+                    <p>Judge Leonard Hoffman has served on Grit City's Superior Court for over a decade, earning a reputation for fairness, thoroughness, and an encyclopedic knowledge of the law. Before his appointment to the bench, Hoffman worked as a prosecutor specializing in organized crime cases, giving him unique insight into the criminal enterprises operating within the city.</p>
+                    
+                    <p>His courtroom is known for its strict decorum and efficiency, with Hoffman famously intolerant of unprepared attorneys or frivolous motions. Despite his sometimes stern demeanor, he is widely respected by defense attorneys and prosecutors alike for his unwavering commitment to justice.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Character Information</h3>
+                    <p>Judge Hoffman's personal life remains intensely private, though it's known that he lives modestly despite his position. He is occasionally seen at the Grit City Symphony Orchestra, where he serves on the board of directors, and is rumored to be an accomplished amateur pianist. His wife, Dr. Eleanor Hoffman, is a respected professor of criminology at Grit City University.</p>
+                    
+                    <ul>
+                        <li><strong>Age:</strong> 61</li>
+                        <li><strong>Occupation:</strong> Superior Court Judge</li>
+                        <li><strong>Phone:</strong> 555-7241</li>
+                        <li><strong>Residence:</strong> Burton District</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Legal Philosophy</h3>
+                    <p>Judge Hoffman is known for:</p>
+                    
+                    <ul>
+                        <li>Balanced sentencing that considers rehabilitation alongside punishment</li>
+                        <li>Strong protection of constitutional rights, particularly regarding search and seizure</li>
+                        <li>Innovative problem-solving courts for drug offenses and veterans</li>
+                        <li>Mentorship programs for young attorneys</li>
+                        <li>Published legal opinions that have influenced courts throughout the state</li>
+                    </ul>
+                    
+                    <p>His famous courtroom phrase, "Justice requires patience, but never inaction," has become something of a motto for the Grit City judicial system.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Captain Malone Modal -->
+    <div class="modal" id="captain-malone-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Captain Sarah Malone</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="/uploads/filename.jpg" alt="Captain Malone" class="modal-image">
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Background</h3>
+                    <p>Captain Sarah Malone is a third-generation firefighter who has dedicated her life to protecting the citizens of Grit City. After joining the department 15 years ago, she quickly established herself as a natural leader with exceptional tactical skills during emergency situations. She was promoted to Captain five years ago and now commands Fire Station 7, covering the downtown district.</p>
+                    
+                    <p>Captain Malone is best known for her heroism during the Grit City Port Fire of 2022, where she personally led rescue operations that saved 23 workers trapped in a burning warehouse. For her actions, she received the department's highest honor, the Medal of Valor.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Character Information</h3>
+                    <p>Behind her professional accomplishments, Sarah is known for her commitment to community outreach and fire prevention education. She established the "Future Firefighters" program in local schools and regularly volunteers at burn survivor support groups. These efforts stem from personal experience—her older brother was severely injured in a house fire when they were children, inspiring her career choice.</p>
+                    
+                    <ul>
+                        <li><strong>Age:</strong> 38</li>
+                        <li><strong>Occupation:</strong> Fire Captain</li>
+                        <li><strong>Phone:</strong> 555-3427</li>
+                        <li><strong>Residence:</strong> Davis Heights</li>
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Station Responsibilities</h3>
+                    <p>As Captain of Station 7, Sarah oversees:</p>
+                    
+                    <ul>
+                        <li>A crew of 24 firefighters across three shifts</li>
+                        <li>Downtown high-rise emergency response protocols</li>
+                        <li>Technical rescue operations including swift water and confined space rescues</li>
+                        <li>Interagency coordination during major incidents</li>
+                        <li>Training and professional development for all station personnel</li>
+                    </ul>
+                    
+                    <p>Under her leadership, Station 7 has achieved the fastest average response time in the department for three consecutive years.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Make sure DOM is fully loaded before attaching event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded'); // Debug line
+            
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    console.log('Menu toggle clicked'); // Debug line
+                    const sidebar = document.querySelector('.sidebar');
+                    sidebar.classList.toggle('active');
+                    
+                    const icon = this.querySelector('i');
+                    if (sidebar.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            } else {
+                console.error('Menu toggle button not found!');
+            }
+            
+            // Category Filtering
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const memberCards = document.querySelectorAll('.member-card');
+            
+            console.log('Found ' + categoryFilters.length + ' filters and ' + memberCards.length + ' cards'); // Debug line
+            
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    console.log('Filter clicked: ' + this.getAttribute('data-category')); // Debug line
+                    
+                    // Remove active class from all filters
+                    categoryFilters.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked filter
+                    this.classList.add('active');
+                    
+                    // Get selected category
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide members based on category
+                    memberCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Modal Functionality
+            const memberCardsWithModals = document.querySelectorAll('.member-card[data-modal]');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-modal, .close-btn');
+            
+            console.log('Found ' + memberCardsWithModals.length + ' cards with modals, ' + 
+                       modals.length + ' modals, and ' + closeButtons.length + ' close buttons'); // Debug line
+            
+            // Open modal when clicking on a member card
+            memberCardsWithModals.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Prevent opening modal when clicking on the view-more link (which might have its own function)
+                    if (e.target.classList.contains('view-more') || 
+                        e.target.closest('.view-more')) {
+                        return;
+                    }
+                    
+                    const modalId = this.getAttribute('data-modal');
+                    console.log('Card clicked, looking for modal: ' + modalId); // Debug line
+                    
+                    const modal = document.getElementById(modalId);
+                    
+                    if (modal) {
+                        console.log('Modal found, opening it'); // Debug line
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent body scrolling
+                    } else {
+                        console.error('Modal not found: ' + modalId);
+                    }
+                });
+                
+                // Make "View Details" button also open the modal
+                const viewMoreBtn = card.querySelector('.view-more');
+                if (viewMoreBtn) {
+                    viewMoreBtn.addEventListener('click', function(e) {
+                        e.preventDefault(); // Prevent default anchor behavior
+                        const modalId = card.getAttribute('data-modal');
+                        const modal = document.getElementById(modalId);
+                        
+                        if (modal) {
+                            modal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
+                }
+            });
+            
+            // Close modal when clicking close button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log('Close button clicked'); // Debug line
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto'; // Re-enable body scrolling
+                    }
+                });
+            });
+            
+            // Close modal when clicking outside of modal content
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        console.log('Clicked outside modal content'); // Debug line
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    console.log('Escape key pressed'); // Debug line
+                    modals.forEach(modal => {
+                        if (modal.classList.contains('active')) {
+                            modal.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                }
+            });
+        });
+    
+    // Authentication State
+        let currentUser = null;
+
+        // Check authentication status
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/auth/status');
+                if (response.ok) {
+                    currentUser = await response.json();
+                    updateUI();
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+
+        // Update UI based on auth state
+        function updateUI() {
+            const authSection = document.querySelector('.auth-section');
+            const submissionForm = document.querySelector('#submissionForm');
+            const modPanel = document.querySelector('.moderation-panel');
+
+            if (currentUser) {
+                authSection.innerHTML = `
+                    <div class="user-info">
+                        <img src="${currentUser.avatar}" class="user-avatar">
+                        <span>Welcome, ${currentUser.username}</span>
+                    </div>
+                `;
+
+                if (currentUser.roles.includes('Member')) {
+                    submissionForm.style.display = 'block';
+                }
+
+                if (currentUser.roles.includes('Moderator')) {
+                    modPanel.style.display = 'block';
+                    loadPendingSubmissions();
+                }
+            }
+        }
+
+        // Load community members
+        async function loadMembers() {
+            try {
+                const response = await fetch('/api/members');
+                const members = await response.json();
+                renderMembers(members);
+            } catch (error) {
+                console.error('Failed to load members:', error);
+            }
+        }
+
+        // Render members to grid
+        function renderMembers(members) {
+            const grid = document.getElementById('memberGrid');
+            grid.innerHTML = members.map(member => `
+                <div class="member-card" data-category="${member.category}">
+                    <div class="member-image">
+                        <img src="${member.image}" alt="${member.name}">
+                        <div class="member-icon">
+                            <i class="${getCategoryIcon(member.category)}"></i>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <h3 class="member-name">${member.name}</h3>
+                        <p class="member-role">${member.role}</p>
+                        <p class="member-description">${member.description}</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Handle form submission
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('Submission received for review!');
+                    e.target.reset();
+                }
+            } catch (error) {
+                console.error('Submission failed:', error);
+            }
+        });
+
+        // Initial load
+        checkAuth();
+        loadMembers();
+
+        // Keep existing JavaScript and add these helper functions
+        function getCategoryIcon(category) {
+            const icons = {
+                staff: 'fa-shield-alt',
+                leo: 'fa-badge-sheriff',
+                business: 'fa-briefcase',
+                // Add other category icons
+            };
+            return `fas ${icons[category] || 'fa-user'}`;
+        }
+    </script>
+</body>
+</html>

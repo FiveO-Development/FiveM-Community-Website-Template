@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RULES - Grit City Roleplay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        :root {
+            --primary-color: #9e1c1c;
+            --primary-dark: #7a1515;
+            --primary-light: #b92a2a;
+            --secondary-color: #1e1215;
+            --background-color: #0f0809;
+            --card-color: #1e1215;
+            --text-color: #f8fafc;
+            --border-color: #33151a;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+            --hover-color: #ca2020;
+        }
+        
+        .light-mode {
+            --primary-color: #ca2020;
+            --primary-dark: #9e1c1c;
+            --primary-light: #e63535;
+            --secondary-color: #f0f0f0;
+            --background-color: #ffffff;
+            --card-color: #f0f0f0;
+            --text-color: #1e1215;
+            --border-color: #dfdfdf;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.1rem;
+            padding-bottom: rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .server-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .server-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem;
+            margin-left: 250px;
+        }
+
+        /* Main Content */
+        .rules-container {
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .rules-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .rules-header p {
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .rule {
+            margin-bottom: 1.5rem;
+        }
+
+        .rule-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .rule-content {
+            margin-left: 1rem;
+        }
+
+        .rule-content p {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .rule-content ul, .rule-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .subsection {
+            margin-bottom: 1.5rem;
+        }
+
+        .subsection-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .spirit-intent {
+            background-color: rgba(158, 28, 28, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .spirit-intent h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .spirit-intent ul {
+            margin-left: 1.5rem;
+        }
+
+        .spirit-intent li {
+            margin-bottom: 0.5rem;
+        }
+
+        .values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .value-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .value-card i {
+            color: var(--primary-color);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+        .social-icon {
+            display: inline-block;
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin: 0 2.5px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 100%;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .rules-container {
+                padding: 1rem;
+            }
+            
+            .values {
+                flex-direction: column;
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle i {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 55px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Rules button arrow */
+        .nav-arrow {
+            font-size: 0.75rem;
+            margin-left: auto;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
+
+        #rulesNav.expanded .nav-arrow {
+            transform: rotate(90deg);
+            opacity: 1;
+        }
+
+        /* Rules submenu slide-out */
+        .rules-submenu {
+            position: fixed;
+            left: 250px; /* Width of the sidebar */
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 99;
+            transform: translateX(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .rules-submenu.expanded {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Submenu header with search */
+        .submenu-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .submenu-search {
+            width: 100%;
+            padding: 10px 15px;
+            padding-right: 40px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-search:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .submenu-search::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Submenu items */
+        .submenu-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding-left: 20px;
+        }
+
+        .submenu-icon {
+            margin-right: 12px;
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .submenu-text {
+            font-size: 14px;
+        }
+
+        /* Server status in footer */
+        .submenu-footer {
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background-color: var(--success-color);
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        .player-count {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Custom scrollbar for submenu */
+        .submenu-items::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .submenu-items::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .submenu-items::-webkit-scrollbar-thumb {
+            background: var(--primary-dark);
+            border-radius: 4px;
+        }
+
+        .submenu-items::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Active submenu item */
+        .submenu-item.active {
+            background-color: rgba(158, 28, 28, 0.1);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 12px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .rules-submenu {
+                left: 100vw; /* For mobile, slide from the right edge */
+                width: 250px;
+            }
+
+            .rules-submenu.expanded {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="server-logo" style="width: 175px; height: 175px;">
+                    <img src="img/logo.png" alt="Grit City RP Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="rules.html" class="nav-link">
+                    <i class="fas fa-gavel"></i>
+                    <span>Rules</span>
+                </a>
+                <a href="http://15.204.254.116:3000/" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    <span>Tourist Map</span>
+                </a>
+                <a href="businesses.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Businesses</span>
+                </a>
+                <a href="resources.html" class="nav-link">
+                    <i class="fas fa-cube"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="community.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="https://fiveodevelopment.tebex.io/category/webtemplate" class="nav-link">
+                    <i class="fas fa-store"></i>
+                    <span>VIP Store</span>
+                </a>
+                <a href="application.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Apply</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="social-icons">
+                </div>
+                <p>&copy; 2025 Grit City Roleplay</p>
+            </div>
+        </div>
+
+        <!-- Rules Submenu (Side Drawer) -->
+        <div class="rules-submenu" id="rulesSubmenu">
+            <div class="submenu-header">
+                <input type="text" placeholder="Search rules..." class="submenu-search">
+                <i class="search-icon fas fa-search"></i>
+            </div>
+            
+            <div class="submenu-items">
+                <a href="#values" class="submenu-item">
+                    <div class="submenu-icon">⭐</div>
+                    <div class="submenu-text">Values</div>
+                </a>
+                
+                <a href="#spirit-intent" class="submenu-item">
+                    <div class="submenu-icon">📜</div>
+                    <div class="submenu-text">Spirit of Intent Clause</div>
+                </a>
+                
+                <a href="#section1" class="submenu-item">
+                    <div class="submenu-icon">📋</div>
+                    <div class="submenu-text">Section 1: General Rules</div>
+                </a>
+                
+                <a href="#section2" class="submenu-item">
+                    <div class="submenu-icon">💻</div>
+                    <div class="submenu-text">Section 2: Server Rules</div>
+                </a>
+                
+                <a href="#section3" class="submenu-item">
+                    <div class="submenu-icon">👑</div>
+                    <div class="submenu-text">Section 3: VIP Rules</div>
+                </a>
+                
+                <a href="#section4" class="submenu-item">
+                    <div class="submenu-icon">🔫</div>
+                    <div class="submenu-text">Section 4: Gang RP</div>
+                </a>
+                
+                <a href="#section5" class="submenu-item">
+                    <div class="submenu-icon">🏙️</div>
+                    <div class="submenu-text">Section 5: General Gang Rules</div>
+                </a>
+                
+                <a href="#section6" class="submenu-item">
+                    <div class="submenu-icon">⚖️</div>
+                    <div class="submenu-text">Section 6: Disciplinary Actions</div>
+                </a>
+            </div>
+            
+            <div class="submenu-footer">
+                <div class="server-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">SERVER ONLINE</span>
+                </div>
+                <div class="player-count">Players: 0/128</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="rules-container">
+                <h1 class="page-title">Rules & Regulations</h1>
+                
+                <div class="rules-header">
+                    <p>Welcome to Grit City Roleplay. To ensure a positive experience for all members of our community, we've established the following rules and guidelines. Please read and understand these rules before joining our server.</p>
+                </div>
+                
+                <!-- Values Section -->
+                <div class="section" id="values">
+                    <h2 class="section-header">Values</h2>
+                    
+                    <div class="values">
+                        <div class="value-card">
+                            <h3><i class="fas fa-theater-masks"></i> Roleplay</h3>
+                            <p>We expect all community members to roleplay to the highest possible standard and remain in character while in-game. A person must act in the confines of the character they have created and are currently playing as. If you wish to switch characters, you must log out of the server and log back in as your new character.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <h3><i class="fas fa-handshake"></i> Respect & Diversity</h3>
+                            <p>All community members must be respectful at all times while in-city or on our community platforms. This means that users must never be involved with or publish any content that is deemed racist, homophobic, sexist, prejudiced, or disrespectful. We also forbid the sharing or publishing of any sexually explicit content on any of our community platforms.</p>
+                        </div>
+                        
+                        <div class="value-card">
+                            <h3><i class="fas fa-smile"></i> Fun</h3>
+                            <p>Grit City RP strives to create a city where everyone can enjoy their time. This city and community are meant to be places that everyone can enjoy their off time. At the end of the day, this is a game and we want people to enjoy their time playing it.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <!-- Spirit of Intent Clause -->
+                <div class="section" id="spirit-intent">
+                    <div class="spirit-intent">
+                        <h3>Spirit of Intent Clause</h3>
+                        <p>While our rules aim to cover as many scenarios as possible, they are not exhaustive. Members are expected to adhere to the spirit of intent behind these rules. This means:</p>
+                        <ul>
+                            <li>If something is not explicitly stated as against the rules, it does not automatically make it acceptable.</li>
+                            <li>Use common sense and consider whether an action aligns with the principles of fair play, respect, and the overall goals of the community.</li>
+                            <li>Exploiting loopholes or intentionally bypassing the intention behind the rules will not be tolerated.</li>
+                        </ul>
+                        <p>The staff team reserves the right to address any behavior that violates the spirit of intent, even if not explicitly outlined in the rules.</p>
+                    </div>
+                </div>
+                
+                <!-- Section 1: General Rules -->
+                <div class="section" id="section1">
+                    <h2 class="section-header">Section 1: General Rules</h2>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">1. Communication</h3>
+                        <div class="rule-content">
+                            <p>You must be able to understand, speak, and type English since we are a North American based server.</p>
+                            <p>You must have a working microphone. GCRP is an all-inclusive community that includes people with disabilities. If you have a disability that hinders your ability to use a microphone, please reach out to a member of the staff to facilitate another method of communication.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">2. Respect for the Community</h3>
+                        <div class="rule-content">
+                            <p>You must be respectful to other players and staff members. You must always keep in mind that whatever you do in-game, it must not infringe on others' capacity to enjoy the game. This means not sending angry or offensive out of city messages because of something that happened in the game. Do not argue with staff because you disagree with a ruling, fill out a ticket to deal with the issue privately. NO TROLLING players, members, police, staff, etc.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">3. Administrator Instructions/Rulings</h3>
+                        <div class="rule-content">
+                            <p>Administrator instructions or rulings are final and non-negotiable. If an administrator's ruling seems to have been made in error the dispute must be handled outside the game via discord by creating a staff complaint ticket. Please do not "DM" members of the Staff Team directly, use the proper channel within Discord, follow the proper chain of command or open a support ticket. Privately messaging the owner of the city to circumvent a disciplinary action may result in a 3 day suspension.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">4. Lying to a Staff Member</h3>
+                        <div class="rule-content">
+                            <p>Do not lie to a staff member about anything related to GCRP. This includes in-game matters, discord, or any other entity relating to or belonging to GCRP. Do not lie in a report or ticket regarding anything, attempting to mislead a staff member by creating a fallacy simply to gain an advantage or abuse OOC mediums such as vehicle teleports or asset refunds, or falsify videos, screenshots, recording or other pieces of evidence in refund requests, player complaints, staff complaints or any other OOC reporting method.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">5. Circumventing a Ban</h3>
+                        <div class="rule-content">
+                            <p>While you are banned from the server and/or Discord you are not allowed to register another account or use an alternate account until the ban period has expired. Otherwise, your other account may also be banned and your original ban extended. Dispute bans in the discord by creating a ticket in Officer Mills Discord.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">6. Game Modifications</h3>
+                        <div class="rule-content">
+                            <p>You are not permitted to use a modification that grants you an advantage on the server. DO NOT install game mods that alter vehicle handling, performance, or that can gain you any type of advantage over others. Cheats, mods, plugins, scripts, or any third-party additions will get you banned if you are caught using them. Our server uses a 3rd party Anti-Cheat that can also get you banned from other servers.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">7. Recruitment/Advertising Other Servers/Self Promotion</h3>
+                        <div class="rule-content">
+                            <p>Absolutely NO recruiting to other servers or advertising other servers in any GCRP discord or in game. Discord server profile "about me" section must not advertise other servers. Your main Discord "about me" can be whatever you'd like but the profile for any GCRP discord needs to not advertise to other servers. No self-promoting, promoting other servers, or recruitment is allowed. This includes Direct messaging or spamming invites to other members.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Server Rules -->
+                <div class="section" id="section2">
+                    <h2 class="section-header">Section 2: Server Rules</h2>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">1. Going Out of Character (OOC)</h3>
+                        <div class="rule-content">
+                            <p>Roleplay first, Report Later! You must always strive to RP first before ever going OOC. Please, do not use the OOC to end a scene, try to change the scene using RP first. Ending a scene by saying or going OOC is considered FailRP. Going OOC during RP scenes can result in disciplinary action.</p>
+                            <p>If you need a staff member:</p>
+                            <ul>
+                                <li>If a staff member is available in-game, doing /report can get you assistance. Doing /report does not guarantee that you will get help right then however.</li>
+                                <li>If you have an issue with how RP is going, the best way to get a staff member is to create a ticket in the discord.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">2. Deathmatching</h3>
+                        <div class="rule-content">
+                            <p>Killing another player for little or no engaged roleplay is strictly forbidden. There will be absolutely no RDM or VDM. (For Example: If a traffic accident has occurred while a player was hit by a car it needs to be roleplayed out.)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">3. Downed & New Life Rule</h3>
+                        <div class="rule-content">
+                            <div class="subsection">
+                                <h4 class="subsection-title">Phase 1: (On your side)</h4>
+                                <ul>
+                                    <li>When in this phase you are considered knocked out/down, which means you're able to still speak in game and on radio.</li>
+                                    <li>You can remember the general interaction that lead to you ending up on the ground.</li>
+                                    <li>You still are required to act hurt as you have been injured.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="subsection">
+                                <h4 class="subsection-title">Phase 2: (On your back / Fully bled out)</h4>
+                                <ul>
+                                    <li>When in this phase you are considered dead and are required to roleplay it as such. This means NO speaking or interacting with those around you. You are DEAD, no talking while DEAD.</li>
+                                    <li>You must forget everything within the past 30 minutes. (from the time you go on your back and 30 minutes prior).</li>
+                                    <li>If you go on your back while EMS is on scene you can still remember.</li>
+                                    <li>If a friend is transporting you and you go on your back you will forget.</li>
+                                    <li>You may be reminded of things that happened prior to your death by someone who was involved on the scene. Due to EMS federal protection they can only tell you what procedures were done to you. They must not tell you who brought you or who shot you if they know. EMS must remain neutral at all times.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="subsection">
+                                <h4 class="subsection-title">Do Not Return to The Scene:</h4>
+                                <p>If you are downed and removed from the scene by EMS/Fire, Police, or taken to the hospital by another subject you are not allowed to return to the scene until the situation/scene is complete.</p>
+                            </div>
+                            
+                            <div class="subsection">
+                                <h4 class="subsection-title">Calling for EMS:</h4>
+                                <p>If you are downed for any reason, there is no requirement to hit your "G" muscle to call for EMS. Another civilian/cop may transport you to the hospital. EMS is to be utilized when they are available, but if they are busy or at a different location you may wait for them to arrive at your location or at the hospital; or you may check in to get healed up if approved by EMS or if there is only 4 EMS in the city. Do not continually skip using EMS. It is considered FailRP and will be dealt with on a case by case basis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">4. Power-Gaming</h3>
+                        <div class="rule-content">
+                            <p>Power-gaming is the act of using an in-game mechanic, any external information, or a roleplay concept to favor your own character or story, and give yourself an unfair or unrealistic advantage. (No running to teleportation markers to escape, such as running into your apartment or anywhere that is not accessible by others. This includes an example of doing a robbery, getting in a chase and running to a garage, and putting your vehicle away. If you are still in your original vehicle then there must be a 10-minute wait period to store that vehicle, repair, or modify it after a pursuit.) Also, If you are asked for your federal ID in-game, you are required to give it for reporting purposes or face disciplinary actions!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">5. Metagaming</h3>
+                        <div class="rule-content">
+                            <p>The act of using out-of-character/external information for in-game situations that you may become a part of. This includes stream sniping, 3rd party VOIP applications (discord calls, TS for non-LEO), etc. Any information used from watching streams, typing/reading chat, etc. will be met with disciplinary action up to and/or including a suspension from the server.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">6. Offensive RP/Suicide RP/Combat Logging</h3>
+                        <div class="rule-content">
+                            <ul>
+                                <li>Roleplaying any type of sexual assault such as any non-consensual touching, rape, etc. is not allowed and will result in a disciplinary action, and an appeal will not be allowed.</li>
+                                <li>Suicide RP will not be accepted or tolerated.</li>
+                                <li>Roleplaying a mental Illness will not be accepted or tolerated.</li>
+                                <li>Logging off or forcibly re-spawning to avoid situations is not allowed. IF you have to log off but are in the middle of an RP situation, you will need acknowledgment from all parties involved. This includes police chases and/or medical scenes. If you know you do not have the time to complete a scenario, do not start it. If all parties involved do not agree that the scene must be ended and you log out it will be considered combat logging and be dealt with accordingly.</li>
+                                <li>Once you commit a crime you must wait ten minutes before logging out of the server. If you are in the middle of a scene and your game crashes or something causes you to suddenly leave, try to log back in as soon as possible and explain your situation. If you cannot get back in within 5 minutes, please create a ticket and explain what happened and whom you were involved with during your scene so we can notify them of the issue. Abusing this rule will result in a disciplinary action.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">7. Zero-Tolerance Rule</h3>
+                        <div class="rule-content">
+                            <p>GCRP has ZERO tolerance for ANY sexual misconduct, not following this rule will result in disciplinary action. Any Reports of Sexual harassment of any degree at any time will be handled accordingly and investigated thoroughly by the Senior Administration. Rape scenes of any nature are PROHIBITED, even with consent from other players this behavior will get you both banned without the ability to appeal.</p>
+                            <p>Roleplaying sexual assault (such as non-consensual touching, rape, etc.) is not allowed and will result in a disciplinary action and will be thoroughly investigated by Senior Administration. We do not tolerate this behavior.</p>
+                            <p>Racial Slurs and Transphobic/Homophobic terms towards others are NOT allowed. We do not take these situations lightly. Each report will be determined on a case by case basis.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">8. Exploiting Bugs</h3>
+                        <div class="rule-content">
+                            <p>At no time are you allowed to exploit bugs in-game for personal gain. If it's too good to be true, it probably is. Please report a bug if you find one via a discord ticket.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">9. Interactions between your characters</h3>
+                        <div class="rule-content">
+                            <p>You are allowed to have multiple characters in the city, however, your personal characters cannot know each other from an in-character perspective. You are also not allowed to interact between the two characters ie. transferring money or any other assets between your characters or using a third-party "friend" to transfer items between your characters. If this is discovered those items will be deleted from your inventory and you will receive disciplinary action.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">10. Robbing Players</h3>
+                        <div class="rule-content">
+                            <p>When robbing another player, you are only able to take what they currently have in their inventory.</p>
+                            <p>You Cannot:</p>
+                            <ul>
+                                <li>Request bank transfers or force them to sell their car(s),</li>
+                                <li>Take items from someone else's apartment.</li>
+                                <li>In the instance that you are robbing/trying to kidnap a player, you cannot kill that player unless they outright refuse to comply, provide resistance, or provoke you to inflict harm.</li>
+                            </ul>
+                            <p>If a person is killed (on their side or back) they can be robbed. However, the reason for killing them can not be specifically to rob them. There must be roleplay behind it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">11. Healing in a situation</h3>
+                        <div class="rule-content">
+                            <p>All citizens are allowed to use bandages and/or add armor during situations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">12. Exploiting Scripts/GTA V Mechanics</h3>
+                        <div class="rule-content">
+                            <p>Knowingly exploiting the script and/or the GTA V engine in order to gain an advantage is not allowed. This includes abusing the physics of GTA V in order to do unrealistic things such as ramping cars off cliffs and continuing to flee. Unrealistic driving is considered FailRP.</p>
+                            <ul>
+                                <li>You need to roleplay out vehicle damage. Examples include:
+                                    <ul>
+                                        <li>If you hit a pole head on with significant front end damage, your car would be totaled.</li>
+                                        <li>If you are going 75 mph and hit a barrier or pole or some heavy object multiple times the natural RP would be damaging your vehicle to the point it is undriveable. Not continuing to drive after striking multiple barriers and other things at high speeds.</li>
+                                    </ul>
+                                </li>
+                                <li>Driving in the city limits constantly at 100mph+ is also unrealistic.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">13. Failure to Roleplay/Unrealistic RP</h3>
+                        <div class="rule-content">
+                            <p>Failing to roleplay is strictly forbidden. GCRP is a realistic roleplay server, you are expected to be roleplaying at all times. If a situation presents itself where rules are broken, roleplay first, and report later. You are expected to use script features to assist in roleplay. DO NOT continuously type in OOC chat while another player is trying to roleplay with you. Unrealistic RP would be driving excessive speeds thru the city, jumping curbs you would not jump in real life, taking sedan type cars up high banked hills or thru water. Unrealistic RP is unacceptable and will result in disciplinary action. This is a realistic RP server.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">14. AFK/Money Farming</h3>
+                        <div class="rule-content">
+                            <p>Do not go AFK on the server for any longer than 15 minutes, log out and return when you are ready to play. If you are observed AFK for longer than 15 minutes you will be kicked from the server at that time and can relog when you are ready to do so.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">15. Safe Zones</h3>
+                        <div class="rule-content">
+                            <p>Safe Zones must be crime-free. It is FailRP to run away from a crime and enter a safe zone. If the RP begins outside of the safe zone and is brought into the safe zone you may continue the criminal RP, however, it must be realistic. If you are loitering in a safe-zone your federal protection is removed.</p>
+                            <p>The following are considered safe zones:</p>
+                            <ul>
+                                <li>Inside and car ports of Police Stations</li>
+                                <li>EMS/FIRE Stations</li>
+                                <li>Inside Hospitals (Inside or under awning) (no retaliatory crimes)</li>
+                                <li>Spawn Locations - Spawn locations are SAFE ZONES in that a player must be allowed to move freely from the spawn location after flying in and have two minutes to collect themselves and their vehicle. Spawn locations are not protected when loitering in the area.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">16. Impersonating Emergency Personnel</h3>
+                        <div class="rule-content">
+                            <p>Citizens are prohibited from impersonating emergency personnel this includes, but is not limited to, Police, Fire/EMS, DOT, and Communications.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">17. Stealing or Harming Federally Protected Vehicles and/or Personnel</h3>
+                        <div class="rule-content">
+                            <h4 class="subsection-title">Personnel:</h4>
+                            <p>The following groups are federally protected under this rule:</p>
+                            <ul>
+                                <li>EMS/FIRE/SADOT and Communications employees</li>
+                                <li>Aviation School employees, instructors, and trainees</li>
+                            </ul>
+                            <p>Kidnapping, killing, robbing, or holding hostage any federally protected personnel, including Aviation School employees or students, is strictly prohibited.</p>
+                            <p>In the case of a scene with active shooting:</p>
+                            <ul>
+                                <li>If EMS or Aviation School personnel are staged near a scene, the scene may continue, but if they enter the area, all firing must cease immediately.</li>
+                                <li>EMS and Aviation School personnel must not be used as a means to end a scene and may only be called in once the scene is cleared by Police or appropriate authorities.</li>
+                            </ul>
+                            
+                            <h4 class="subsection-title">Vehicles:</h4>
+                            <p>The following vehicles are federally protected and may not be stolen or harmed:</p>
+                            <ul>
+                                <li>LEO/EMS/Fire/SADOT vehicles.</li>
+                                <li>Aviation School aircraft and equipment, including all planes, helicopters, and related gear.</li>
+                                <li>Local and business aircraft, including military vehicles such as helicopters, tanks, jets, transport vehicles, and cargo bobs.</li>
+                            </ul>
+                            
+                            <h4 class="subsection-title">Additional Provisions:</h4>
+                            <ul>
+                                <li>Citizens are strictly prohibited from stealing, damaging, or interfering with Aviation School aircraft, equipment, or operations.</li>
+                                <li>Stealing from police vehicles is permitted within roleplay limits; however, stealing or tampering with Aviation School vehicles and equipment is expressly forbidden.</li>
+                            </ul>
+                            <p>This amendment ensures that the Aviation School, its employees, students, and equipment are afforded the same protections as other federally protected services and personnel.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">18. Robbery Rules</h3>
+                        <div class="rule-content">
+                            <h4 class="subsection-title">Hostages:</h4>
+                            <ul>
+                                <li>There must be a minimum of 6 officers for high priority crime. (i.e. bank robbery, jewelry store robbery. Except for taking a police hostage where there must be 7 officers on duty.)</li>
+                                <li>Robbers can not take a friend(s) hostage, one of the robbers cannot pose as a hostage or have a fake hostage. The Robbers must go out and find a random person and take them hostage for these scenarios.</li>
+                                <li>There is no limit on hostages, however there must be a reasonable amount of individuals to manage the amount of hostages you have.</li>
+                                <li>Taking the hostage with you after the crime is committed is not allowed, a hostage will not be allowed to leave the scene of a robbery. Law Enforcement will take action to prevent the hostage from being taken from the scene.</li>
+                                <li>If a ransom is being requested in exchange for the hostage, the hostage MUST be exchanged for the money. (Total ransom allowed for request: $40,000 per hostage in cash.)</li>
+                            </ul>
+                            
+                            <h4 class="subsection-title">Robbers:</h4>
+                            <ul>
+                                <li>No more than 6 robbers on the scene of a robbery.</li>
+                                <li>No more than 3 vehicles will be allowed</li>
+                                <li>Your scene must be set up before starting the robbery. You can not start the robbery and then add people to it or show up later with the hostage. You MUST have a backpack/or bag on your person while conducting the robbery, this "shows" in RP where you are putting the items you are stealing. Also as a "robber", this is where you will be "storing" your AR-type rifles.</li>
+                                <li>Robbers can ask for demands during negotiations (cops not pursuing and taking the hostage from the scene is not an option).</li>
+                            </ul>
+                            
+                            <h4 class="subsection-title">LEO:</h4>
+                            <ul>
+                                <li>Law enforcement will begin conducting the negotiations. Law enforcement may have as many LEO as they deem necessary. There is no longer a plus 2 rule.</li>
+                                <li>When SRT arrives on the scene (if requested) all other LEO are to leave the bank scene to set up a perimeter except for the negotiating officer. You must have a minimum of 4 to be considered an active SRT.</li>
+                            </ul>
+                            <p>Negotiations can be conducted over a mutual radio channel between robbers and police, by phone or with a megaphone.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">19. Cop Baiting</h3>
+                        <div class="rule-content">
+                            <p>No cop baiting. Do not purposefully try and get police attention on you by doing things you would not do with an Officer near you. This includes burning out in the middle of intersections, purposefully revving your motor at lights to bait a pullover/chase, and purposely committing traffic violations in the vicinity of police.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">20. EMS Authority over Respawn/EMS Custody/Injuries after EMS Care</h3>
+                        <div class="rule-content">
+                            <h4 class="subsection-title">Respawn:</h4>
+                            <p>When in EMS custody, do not respawn without permission. When you are revived, you are in medical custody until the medic clears you.</p>
+                            
+                            <h4 class="subsection-title">Post-Treatment:</h4>
+                            <p>If you are treated by EMS you cannot immediately run after someone for revenge, you are injured (ie. if you have been shot and have been healed, there is no way you can run normally).</p>
+                            <p>You must RP your injuries for at least 10 minutes following your discharge.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">21. Cop Minimum for Kidnapping</h3>
+                        <div class="rule-content">
+                            <p>If you plan to kidnap a civilian, there must be at least 4 officers on duty. There needs to be a minimum of 7 officers on duty for an Officer to be taken hostage/kidnapped.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">22. Police Mistreatment and Appeal</h3>
+                        <div class="rule-content">
+                            <p>If you feel you have been mistreated in a police situation, use the proper channels in city (ie. speak to a supervisor, fill out a complaint form for that specific agency). Do not contact an admin unless the officer is clearly breaking a server rule. Take abuse of power as in character and report it as you see fit.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">23. RDM/VDM</h3>
+                        <div class="rule-content">
+                            <p>Deadly action (phase 2) needs to have RP behind it.</p>
+                            <ul>
+                                <li>Random Deathmatch (RDM): killing/attempting to kill without intent and roleplay. Killing on sight without proper escalation is not allowed as it could be seen as a form of RDM. Proper escalation would be an ongoing scene that would allow shooting on sight. (i.e Interactions between individuals or groups of individuals that have escalated to violence.)</li>
+                                <li>Vehicle Deathmatch (VDM): using a vehicle to kill/attempt to kill without intent or roleplay.</li>
+                            </ul>
+                            <p>When to put in a ticket/report a player:</p>
+                            <ul>
+                                <li>Example, if someone hits you with their car and you are unhappy, find that person and role play out getting insurance, payback, etc.</li>
+                                <li>If you are run over multiple times and put on your back (phase 2) then escalate to a ticket.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">24. Fear RP</h3>
+                        <div class="rule-content">
+                            <p>Fear RP is what you would do in real life if faced with a scary situation, it is an RP server do not treat it like a videogame. You must fear for your life, just as you would in a normal situation outside of the game.</p>
+                            <ul>
+                                <li>For example, if you are alone in an alleyway and individuals hold you at gunpoint and you cannot escape without dying, you must follow FearRP. The average person would follow their demands as they are helpless in the situation, you wouldn't just walk away or try to pull out a weapon when you are outnumbered.</li>
+                                <li>If you are in your car and someone pulls a gun on you, it is acceptable to speed away, but you are taking a chance on being shot/shot at.</li>
+                                <li>If the cop/suspect informs you to not touch the radio/phone this includes hitting your panic button you must comply or risk being killed.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">25. Perma-Death/Death Penalty</h3>
+                        <div class="rule-content">
+                            <p>A player may decide to perm-death any of their characters. No player will be forced to perm-death a character, except in the following instances</p>
+                            <ul>
+                                <li>The administration team may choose to give your character a Death Penalty if you are considered a repeat offender of deadly crimes or show blatant toxicity with your character's roleplay.</li>
+                                <li>You do not have to report that you are killing off a character.</li>
+                                <li>If you choose to kill one of your characters your "pack cars" will not be transferred or reimbursed. If you are forced to perma-death your character then you may open a report ticket and the "pack cars" may be transferred. Do NOT delete the character until the cars are transferred.</li>
+                            </ul>
+                            <p>If a player decides to do a perm-death, they must be declared dead by any on-duty EMS, use the "/me" command to inform the EMS of your intentions when they arrive on the scene.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">26. Vigilante/Sniping RP</h3>
+                        <div class="rule-content">
+                            <p>Vigilante RP is not allowed. You are not Spider-Man, John Wick, Jason Bourne, Daredevil, etc. Your character is a normal human and must be RP'd as such. There are no trained snipers in the city.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">28. Scene Limits</h3>
+                        <div class="rule-content">
+                            <p>The maximum number of civilians per scene is 6 civilians per criminal scene.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">29. Torture RP</h3>
+                        <div class="rule-content">
+                            <p>While Torture RP is allowed it must be done within reason and the victim must be allowed to continue to RP after the scenario with all body parts still functional and intact if they choose to do so. They can keep any deformities left from the RP if they wish. SEXUAL ACTS ARE NOT ALLOWED.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">30. Camping Illicit Areas</h3>
+                        <div class="rule-content">
+                            <p>Illicit areas include drugs areas, job areas, money washing, etc.</p>
+                            <ul>
+                                <li>Civilians cannot intentionally sit in high traffic areas that lead to illicit spots for the reason of robbing individuals.</li>
+                                <li>Cops are also not allowed to camp drug areas for the sole purpose of making a traffic stop and busting the subject leaving the drug area. Officers are allowed to conduct surveillance to help build a bigger case.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">31. False Flag Operations by Civilians</h3>
+                        <div class="rule-content">
+                            <p>Civilians who execute actions with the clear intent of conducting a false flag operation are subject to perma death from the gang they are impersonating. For example, robbing a bank and wearing other gangs' colors or attire with the intent to get them blamed for your actions. Gang leadership must submit a ticket for perma death to be approved by senior administration.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">32. Respect For Life Rule</h3>
+                        <div class="rule-content">
+                            <p>Any situation leading to a shootout or a killing must have reasonable RP behind it. You MUST attempt to RP the scenario before going straight into violence.</p>
+                            <p>There is a shooting cooldown, regardless of scene type, you must wait 15 minutes before initiating another shootout. Roleplay over Gunplay is HIGHLY recommended!</p>
+                            <p>By implementing this rule within GCRP, it would help drive Roleplay over Gunplay. This rule would push people to think out their RP scenes, getting them out of the run and gun mentality. This rule would bring stronger roleplay from everyone involved.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">33. Server Restart Rule</h3>
+                        <div class="rule-content">
+                            <p>NO criminal Activity is to happen 10 minutes before and/or after a Server Restart. This is everyone's time to put their belongings away, put vehicles in garage. Restart times are 2:00am, 6:00am, 7:00pm Eastern Standard Time. (i.e. Shooting, fighting, speeding in vehicles, spray painting, etc. Anything that could result in Police being called. If you think it might be a crime, don't do it and wait.)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">34. Reporting Processes</h3>
+                        <div class="rule-content">
+                            <p>GCRP is not a ticket based city. However, with rules comes rule breaks and with rule breaks comes reports. In order to properly fill out a ticket to report a player these are the processes.</p>
+                            <ul>
+                                <li>You must submit all evidence you have of the situation in either screenshots or clips. Clips must be unedited and must include sound. If you have to submit a lot of clips that is OK.</li>
+                                <li>Tickets with no evidence should be dismissed and should be handled in the city through RP.</li>
+                                <li>You should have all of your evidence ready to go and ready to add detail to your ticket when you open it. Moderation and staff should not have to come into an empty ticket and ask what you need.</li>
+                                <li>If you suspect a rule break you need to include the rule from the rule book that you believe was broken with the evidence.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 3: VIP Rules -->
+                <div class="section" id="section3">
+                    <h2 class="section-header">Section 3: VIP Rules</h2>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">1. Sale of VIP Cars</h3>
+                        <div class="rule-content">
+                            <p>The sale of VIP cars is prohibited. Please do not sell/give/trade your vehicle or VIP benefits to any other player.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">2. VIP Benefits</h3>
+                        <div class="rule-content">
+                            <p>All VIP benefits are strictly for only VIPs. Any and all benefits that are available must not be given or traded to any other players. The only exception would be giving keys to a VIP house to a non VIP member.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 4: Gang RP -->
+                <div class="section" id="section4">
+                    <h2 class="section-header">Section 4: Gang RP</h2>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">1. Gang Definition</h3>
+                        <div class="rule-content">
+                            <p>The definition of gang includes but is not limited too:</p>
+                            <ul>
+                                <li>Members share an identity, typically linked to a name, and often other symbols. Members view themselves as a gang, and they are recognized by others as a gang. The group has some permanence and a degree of organization. The group is involved in an elevated level of criminal activity.</li>
+                                <li>An association of five (5) or more individuals;</li>
+                                <li>Whose members collectively identify themselves by adopting a group identity, which they use to create an atmosphere of fear or intimidation, frequently by employing one or more of the following: a common name, slogan, identifying sign, symbol, tattoo or other physical marking, style or color of clothing, hairstyle, hand sign or graffiti;</li>
+                                <li>Whose purpose in part is to engage in criminal activity and which uses violence or intimidation to further its criminal objectives.</li>
+                                <li>Whose members engage in criminal activity with the intent to enhance or preserve the association's power, reputation or economic resources.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">2. Blood in/Blood out</h3>
+                        <div class="rule-content">
+                            <p>Gang membership follows the "blood in/blood" out rule. Entering a gang fully exposes the member to the gang's rules and processes. Member characters can be forced perm death, depending on the leader, once approved by Lead Senior Admin. Members may be allowed to leave on good terms determined by the remaining gang members; however, if the character is found to violate the terms of release, forced perm death rules may apply. A bleed out will be subject to the gang's processes in their by-laws.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">3. Forced Perm Death Authorization Process</h3>
+                        <div class="rule-content">
+                            <p>A ticket must be opened by the highest member of the gang requesting perm death authorization. The admin team will discuss as soon as possible, and the approval will be granted by the Lead Senior Admin or higher.</p>
+                            <p>When opening the ticket:</p>
+                            <ul>
+                                <li>Request for Moderation to be removed and administration to be tagged.</li>
+                                <li>DO NOT provide any information or details until the above has occurred.</li>
+                                <li>Please provide the following in the ticket:
+                                    <ul>
+                                        <li>A thorough explanation as to why the perma death is being requested.</li>
+                                        <li>Method of death.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">4. False Flag Operations</h3>
+                        <div class="rule-content">
+                            <p>Gang members who execute actions with the clear intent of conducting a false flag operation are subject to perma-death from the gang they are impersonating. For example, robbing a bank and wearing other gangs' attire or painting your cars other gang colors with the intent to get them blamed for your actions. Perma death must be approved by senior administration.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">5. Safe Passage</h3>
+                        <div class="rule-content">
+                            <p>Safe passage to critical in-game assets must be allowed if no other alternative to that asset exists in the city. The use of vehicle sales locations, and supply stores (food or utility) must not be hindered. This includes gas stations in your area. Drug locations and Black Markets are NOT Critical In game assets.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">6. Operational Alliance</h3>
+                        <div class="rule-content">
+                            <p>An alliance between gangs to operate with mutual benefit (example: gangs work together to take down banks, commit robberies, and serve as backup to one another). Each gang is allowed ONE operational alliance.</p>
+                            <ul>
+                                <li>Gangs are allowed to use their Alliance's members to fill the six on a scene rule. (Robberies, Hostage situations, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">7. Operation Agreement</h3>
+                        <div class="rule-content">
+                            <p>An agreement between gangs that are not directly mutually beneficial. This includes freedom of movement in another gang's territory and the ability for a gang to operate within another gang's territory with stipulations. Gangs can have as many operational agreements as they would like; however, agreements that lead to operations that appear to be mutually beneficial will lead to discipline (i.e. two gangs working as one).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">8. Disrespect and Consequences</h3>
+                        <div class="rule-content">
+                            <p>Simple disrespect between gangs must NOT lead to an escalation higher than disrespect (trash-talk) without prior escalation. (i.e you cannot go straight to shooting.)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">9. Gang Hopping and Gang Limits</h3>
+                        <div class="rule-content">
+                            <p>To prevent players from hopping to multiple gangs, and promote gang loyalty, you may only be in 2 gangs total within the city. If you join and leave 2 gangs that character must not have any gang relations. You must be a solo criminal. If a gang is caught breaking said rule they are susceptible to receiving a strike. Players that are gang switching without following this rule could face disciplinary action and/or leading up to perma-death of said character.</p>
+                            <p>Exceptions:</p>
+                            <ul>
+                                <li>If you are in a gang that gets disbanded then you may join another gang and it does not count as your 2 gang limit.</li>
+                                <li>If you are traded to another gang, see next rule, this does not count towards the 2 gang limit.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">10. Gang Trading</h3>
+                        <div class="rule-content">
+                            <p>Gang trading is acceptable. Some examples of gang trading could be but are not limited to supplies for guns and vice versa. Another acceptable trade offer could be member trading for whatever the gangs see fit. This will not count against your 2 gang limit if the trade is approved.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 5: General Gang Rules -->
+                <div class="section" id="section5">
+                    <h2 class="section-header">Section 5: General Gang Rules</h2>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">1. New Gangs</h3>
+                        <div class="rule-content">
+                            <p>All new gangs will be under a 14-day probationary period where they will only receive 2 strikes before disbandment. While under the 14-day probation, new gangs are allowed to do all gang-related activities except gang wars.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">2. Gang Membership and Minimums</h3>
+                        <div class="rule-content">
+                            <ul>
+                                <li>A minimum of six (6) members must be present and active to start a gang.</li>
+                                <li>Gangs are required to maintain at least 6 active members after being whitelisted, if activity drops below the required amount, gangs will receive a warning to increase activity within a 15-day period. If the activity does not improve after 15 days, the gang will be disbanded with the option to reapply in 30 days with increased activity/more members.</li>
+                                <li>Gangs are limited to 20 members max.</li>
+                                <li>You may only have ONE gang character; this is to prevent any meta-gaming between rival gangs.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">3. General Guidelines</h3>
+                        <div class="rule-content">
+                            <ul>
+                                <li>Gangs can only have one other gang alliance at any time.</li>
+                                <li>Gangs are still expected to follow all GCRP server rules. This includes LEO interactions. Any criminal action in or outside of the gang turf must still adhere to all the GCRP General Rules.</li>
+                                <li>Gang members must NOT do house robberies on their own turf.</li>
+                                <li>Each gang leader is expected to make sure that their gang members are following server rules.</li>
+                                <li>Gang leaders must only be recruiting trustworthy people, and as such, they are the gang leaders' responsibility.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">4. Civilian Interactions</h3>
+                        <div class="rule-content">
+                            <ul>
+                                <li>Gangs that control the territory are allowed to chase out any unwanted persons from the territory that are posing a threat to your gang and are allowed to protect their territory from rival gangs except for when safe passage must be allowed. If civilians are caught selling drugs or robbing stores within gang territory by the gang that controls the area they are subject to taxes, threats, or whatever else the gang in the area is doing except when safe passage must be allowed. Police must not be interfered with while conducting police business (ie. traffic stops) unless the situation involves your gang as a whole.</li>
+                                <li>Gangs are allowed to escalate to violence if a civilian is seen wearing their custom EUP or gang bandana. This could be considered false flagging and could result in perma-death.</li>
+                                <li>At any time a civilian is in a gang territory causing trouble there will not be a limit of gang members that can protect the territory. This includes but is not limited to taxes, threats, and violence.</li>
+                                <li>Gangs cannot chase out people that are simply roleplaying as a civilian not doing criminal RP.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">5. Penalizations & Discipline for Gangs</h3>
+                        <div class="rule-content">
+                            <ul>
+                                <li>The first gang strike will be a warning that will allow the Gang to make adjustments.</li>
+                                <li>After 2 strikes, the Gang will be placed on suspension (see the section below).</li>
+                                <li>After 3 strikes the Gang will risk being disbanded or incurring other punishments.</li>
+                                <li>Gang Strikes will be removed after 30 days but if gangs are repeating the same behavior strikes may not be removed.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">6. Suspension Notes</h3>
+                        <div class="rule-content">
+                            <p>While we reserve the right to suspend and/or disband your gang if deemed necessary, following the guidelines above a gang may be placed on suspension.</p>
+                            <ul>
+                                <li>During this suspension time, your gang is no longer allowed to affiliate with one another on a gang level for a duration of typically 2 weeks (also subject to a shorter or longer time as determined by the team).</li>
+                                <li>No gang activity of any kind. This includes, but is not limited to, going into enemy turfs, selling drugs as a gang or retaliating as a gang.</li>
+                                <li>No gang colors or representation. Color entails vehicles and clothing and/or face masks. Representation entails gang signs or yelling/tweeting your gang name in any context.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">7. Rosters</h3>
+                        <div class="rule-content">
+                            <p>Every gang must have a roster.</p>
+                            <ul>
+                                <li>This roster will need to be sent to the RP staff. Leadership of each gang is responsible for keeping this up-to-date.</li>
+                                <li>All rosters must include member names in the city as well as discord names. The roster will need to be updated ASAP.</li>
+                                <li>A gang must have a minimum of 1 leader and a VP.</li>
+                                <li>The roster will need to be completed on a google sheet and the link will need to be entered into the roster forum under the gangs section of the discord so the RP staff can have the roster on record.</li>
+                                <li>Potential members must be on your roster and be part of your 20 person roster. You cannot have more potential members than you have available spots on your roster.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">8. Gang Rivalries</h3>
+                        <div class="rule-content">
+                            <ul>
+                                <li>Gang Rivalries are not war. Rivalries must be had before war is started.</li>
+                                <li>You must always RP before starting a rivalry as just doing a drive by could be seen as RDM.
+                                    <ul>
+                                        <li>You are subject to police interactions and must not be all out shooting like in a war.</li>
+                                    </ul>
+                                </li>
+                                <li>Simple things like drive-bys, kidnappings, stabbings etc, fall under the rivalry category.</li>
+                                <li>Allies are not able to be involved in a rivalry.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">9. Gang War Mechanics</h3>
+                        <div class="rule-content">
+                            <p>Gang Wars must follow a natural evolution of roleplay. Shallow roleplay may be seen as RDM and thus disciplinary action could follow. In order for war to occur you must come to an agreement of what you are fighting for. War must be a last resort and must not be started because of one person's actions from a gang. Gang leaders can request for peace; however, peace can come at a cost.</p>
+                            <ul>
+                                <li>An RP-support ticket must be opened for the initiating gang to get war approval. There must be good enough terms to start a war.</li>
+                                <li>Gang wars must be announced before the first attack is started.</li>
+                                <li>To start a gang war an in-city parley must happen on neutral grounds to discuss the terms of the war. At this time violence must not occur.</li>
+                                <li>After someone is downed for any reason you must sit out the rest of that round.</li>
+                                <li>Gang wars must work on an attack-retaliation cycle. One gang attacks, then the other attacks. Last man standing from the round wins.</li>
+                                <li>Gang wars must not last longer than 72 hrs.</li>
+                                <li>If rules are broken the leaders must go over the issues and the gang with the rule breaks will take the loss for that round. If the war gets toxic or goes federal the war will be stopped and the gang with the highest score wins.</li>
+                                <li>If a medic is introduced to the war then at no time must they be shot. A medic will be required to wear all white in an all white vehicle. It will be up to the leaders and their pre-war parley to decide what happens if the medics get shot by the opposing gang. This could be a cease-fire until the medic is back on their feet or the round is lost by the shooting gang. Medics must also wait until the shooting has subsided in that area to move in and start picking up bodies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">10. Gang War Rules</h3>
+                        <div class="rule-content">
+                            <p>Something crucial within RP must happen between the two parties in order for a war to happen. A poor reason behind a war can lead to admin intervention.</p>
+                            <ul>
+                                <li>In most cases the request for peace must be accepted unless there is a very good reason to push for more war.</li>
+                                <li>Both sides may introduce allies to join in the war.</li>
+                                <li>If allies are brought in it can only be one other gang, not multiple members from other gangs.</li>
+                                <li>Gangs can only be in one war at a time. A two-week waiting period must be waited before the initiating can declare war on the same gang again.</li>
+                                <li>Gangs must conduct gang wars in their respective colors. Anyone not in Gang colors must either leave and not come back during the scene, or surrender. If they participate in the violence in any way, it will be seen as injecting into the Gang War scene and can be fired upon.</li>
+                                <li>If vehicles bearing the color of an attacking/retaliating gang enter a gang turf, it can be pressed and escalated to violence. Do not automatically open fire unless it is very clear that they are there to do violence.</li>
+                                <li>All members of your gang can be involved in the war, this does not include hang-arounds. They must be full members of your gang.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">11. Law Enforcement/ EMS during a Gang War</h3>
+                        <div class="rule-content">
+                            <p>All Initiation rules and Violence Escalation apply for both gangs and cops. Violence must be the final step when interacting with cops that inject into a Gang War in progress. Law enforcement will be trained to not shoot on sight, the same rules must be followed by the gangs as well.</p>
+                            <ul>
+                                <li>LEO must not interfere in a gang war.</li>
+                                <li>EMS will not be required to continually go into a gang area where shootouts are constant.</li>
+                                <li>EMS will not be a gang's personal revive bot. Should your character be injured or go down in a gang-on-gang situation, EMS will not come on the scene until the end of the RP. If the RP is in a red zone (trap houses, drug processing, etc.), EMS will not respond.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">12. Gang Colors</h3>
+                        <div class="rule-content">
+                            <p>Gang colors are to be treated as a distinct and clear way to identify your gang. A gang is not required to wear their colors at all times; however, gang members must wear their colors when planning interaction with another gang in which not wearing colors would add an advantage via surprise.</p>
+                            <ul>
+                                <li>Gangs cannot dictate the color of cars to any player.</li>
+                                <li>Gangs can roleplay with people inside their territory that consistently frequent the area wearing the home gang's colors.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 6: Disciplinary Actions -->
+                <div class="section" id="section6">
+                    <h2 class="section-header">Section 6: GCRP Disciplinary Actions</h2>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">Written Warning</h3>
+                        <div class="rule-content">
+                            <p>The first level of disciplinary action at GCRP is a written warning, if you are caught breaking any of the official Rules & Regulations you will first be warned by a member of our staff team. You will be told what you did wrong and given a second chance. In most cases, the first action will correct any misconduct.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">Community Suspension</h3>
+                        <div class="rule-content">
+                            <p>The second level of disciplinary action at GCRP is a Community Suspension, if you are caught breaking any of the official Rules & Regulations for a second time you will be suspended from the community for an amount of time, chosen by the staff team on a case-by-case basis. The suspension option will depend on your actions warranting the suspension, which can be 36 hours, 72 hours, 5 days, or 7 days in real life days. Administration reserves the right to suspend for longer than 7 days if the situation warrants that level of discipline. During this period you will still be able to participate in discord conversations, however, you will not be allowed on the server.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">Extended Community Suspension</h3>
+                        <div class="rule-content">
+                            <p>The third level of disciplinary action at GCRP is an Extended Community Suspension, if you are caught breaking any of the official Rules & Regulations for the third time you have demonstrated that you either don't care about rules or have not taken the time to read the rules. You will be suspended from the community for again 36 hours or up to 7 days, determined by the staff team on a case-by-case basis, and will be required to take a short test on the rules before you return to RP. Again, GCRP Administration reserves the right to suspend for longer than 7 days if the situation calls for it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rule">
+                        <h3 class="rule-title">Permanent Removal from the Community</h3>
+                        <div class="rule-content">
+                            <p>The last level of disciplinary action at GCRP is Removal from the community. After multiple attempts to correct actions or a first-time serious offense, you have shown that you lack the maturity to participate in RP in our community. You will be permanently removed from all community platforms.</p>
+                            <p>**Depending on the situation you may be able to re-apply after 60 days.**</p>
+                            <p>All disciplinary actions will be logged by a staff member and kept for record. Even though after 60 days your strikes will be marked as inactive, they will remain on your record and could affect your chances of applying for a staff position within the community.</p>
+                            <p>Community Management and Administration may authorize staff members to deviate from the outlined disciplinary actions if the case requires.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Note at the end -->
+                <p style="margin-top: 2rem;"><em>*GCRP rules are subject to change, be added to, or be removed as the community grows. When rules are changed the community will be notified.*</em></p>
+            </div>
+            
+            <!-- Back to Top Button -->
+            <div class="back-to-top" id="backToTop">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+            
+            <div class="footer">
+                <div class="single-row-icons">
+                    <a href="https://x.com/GritCityRP" class="social-icon"><i class="fa-brands fa-x"></i></a>
+                    <a href="https://discord.gg/3tTMvj9DcA" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@gritcityroleplay" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-mastodon"></i></a>
+                    <a href="https://GritCityRP.com/" class="social-icon"><i class="fas fa-link"></i></a>
+                    <a href="https://www.instagram.com/GritCityRoleplay" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grit City Roleplay. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="attributions.html" class="footer-link">Attributions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+    
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (document.querySelector('.sidebar').classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 5000) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Rules Menu Toggle
+        const rulesNav = document.getElementById('rulesNav');
+        const rulesSubmenu = document.getElementById('rulesSubmenu');
+        const searchInput = document.querySelector('.submenu-search');
+        const submenuItems = document.querySelectorAll('.submenu-item');
+
+        // Toggle submenu on Rules click
+        if (rulesNav) {
+            rulesNav.addEventListener('click', function(e) {
+                // Prevent default only if clicking the link itself, not a child element
+                if (e.target === this || e.target.parentNode === this) {
+                    e.preventDefault();
+                }
+                
+                this.classList.toggle('expanded');
+                rulesSubmenu.classList.toggle('expanded');
+            });
+        }
+
+        // Close submenu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (rulesNav && rulesSubmenu) {
+                if (!e.target.closest('#rulesNav') && !e.target.closest('#rulesSubmenu') && rulesSubmenu.classList.contains('expanded')) {
+                    rulesNav.classList.remove('expanded');
+                    rulesSubmenu.classList.remove('expanded');
+                }
+            }
+        });
+
+        // Search functionality
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                submenuItems.forEach(item => {
+                    const text = item.querySelector('.submenu-text').textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling and active state for submenu items
+        submenuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                submenuItems.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Scroll to target section
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('.sidebar').classList.remove('active');
+                        if (document.getElementById('menuToggle')) {
+                            const icon = document.getElementById('menuToggle').querySelector('i');
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Update active submenu item on scroll
+        window.addEventListener('scroll', function() {
+            if (!submenuItems.length) return;
+            
+            const sections = document.querySelectorAll('.section');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            submenuItems.forEach(item => {
+                item.classList.remove('active');
+                const href = item.getAttribute('href').substring(1);
+                
+                if (href === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

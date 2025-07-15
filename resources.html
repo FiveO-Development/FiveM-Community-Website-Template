@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESOURCES - GCRP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <style>
+        :root {
+            --primary-color: #9e1c1c;
+            --primary-dark: #7a1515;
+            --primary-light: #b92a2a;
+            --secondary-color: #1e1215;
+            --background-color: #0f0809;
+            --card-color: #1e1215;
+            --text-color: #f8fafc;
+            --border-color: #33151a;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+            --hover-color: #ca2020;
+            --modal-bg: rgba(15, 8, 9, 0.9);
+        }
+        
+        .light-mode {
+            --primary-color: #ca2020;
+            --primary-dark: #9e1c1c;
+            --primary-light: #e63535;
+            --secondary-color: #f0f0f0;
+            --background-color: #ffffff;
+            --card-color: #f0f0f0;
+            --text-color: #1e1215;
+            --border-color: #dfdfdf;
+            --modal-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.0rem;
+            padding-bottom: rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .server-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .server-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem;
+            margin-left: 250px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .page-description {
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Resource Categories */
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .category-filter {
+            background-color: var(--card-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-filter:hover, .category-filter.active {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .category-filter i {
+            font-size: 1rem;
+        }
+
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .resource-card {
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .resource-image {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .resource-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .resource-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            top: 10px;
+            right: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover .resource-icon {
+            transform: scale(1.1);
+        }
+
+        .resource-details {
+            padding: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .resource-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .view-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #1e1e1e; /* Dark background */
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    color: #e0e0e0; /* Light text */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.modal-title {
+    color: #c33030; /* Red text color for headers */
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 24px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.modal-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.modal-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-section-title {
+    color: #c33030; /* Red text color for section headers */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    text-align: right;
+    padding-top: 10px;
+}
+
+.close-btn {
+    padding: 8px 16px;
+    background-color: #c33030; /* Red button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Code block styling */
+.code-block {
+    background-color: #2a2a2a; /* Dark background for code blocks */
+    border-radius: 4px;
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-block code {
+    display: block;
+    color: #e0e0e0; /* Light text color */
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    padding: 12px 15px;
+    overflow-x: auto;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Copy indicator style */
+.copy-indicator {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #43b581; /* Green success color */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+        .view-more:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--modal-bg);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--card-color);
+            border-radius: 0.75rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+        }
+
+        .modal-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-footer {
+            text-align: right;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .modal-footer button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-footer button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .single-row-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            display: inline-block;
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin: 0 3.0px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 100%;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        .menu-toggle i {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="server-logo" style="width: 175px; height: 175px;">
+                    <img src="img/logo.png" alt="Grit City RP Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="rules.html" class="nav-link">
+                    <i class="fas fa-gavel"></i>
+                    <span>Rules</span>
+                </a>
+                <a href="http://15.204.254.116:3000/" class="nav-link">
+                    <i class="fas fa-map"></i>
+                    <span>Tourist Map</span>
+                </a>
+                <a href="businesses.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Businesses</span>
+                </a>
+                <a href="resources.html" class="nav-link active">
+                    <i class="fas fa-cube"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="community.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="https://fiveodevelopment.tebex.io/category/webtemplate" class="nav-link">
+                    <i class="fas fa-store"></i>
+                    <span>VIP Store</span>
+                </a>
+                <a href="application.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Apply</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>&copy; 2025 Grit City Roleplay</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 class="page-title">Server Resources</h1>
+            <p class="page-description">Explore our extensive collection of resources to enhance your roleplay experience. From keybinds to job guides, we've got everything you need to thrive in Grit City.</p>
+            
+            <!-- Resource Categories -->
+            <div class="category-filters">
+                <button class="category-filter active" data-category="all">
+                    <i class="fas fa-star"></i>
+                    <span>All Resources</span>
+                </button>
+                <button class="category-filter" data-category="guides">
+                    <i class="fas fa-book"></i>
+                    <span>Guides</span>
+                </button>
+                <button class="category-filter" data-category="keybinds">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Keybinds</span>
+                </button>
+                <button class="category-filter" data-category="jobs">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs</span>
+                </button>
+                <button class="category-filter" data-category="systems">
+                    <i class="fas fa-cogs"></i>
+                    <span>Systems</span>
+                </button>
+                <button class="category-filter" data-category="tools">
+                    <i class="fas fa-tools"></i>
+                    <span>Tools</span>
+                </button>
+            </div>
+            
+            <!-- Resource Grid -->
+            <div class="resource-grid">
+                <!-- Resource Card 1 - Cache Clearing -->
+                <div class="resource-card" data-category="guides" data-modal="cache-modal">
+                    <div class="resource-image">
+                        <img src="img/5mcache.png" alt="Cache Clearing Guide">
+                        <div class="resource-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Cache Clearing Guide</h3>
+                        <p class="resource-description">Learn how to properly clear your FiveM cache to resolve common issues.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 2 - Keybinds -->
+                <div class="resource-card" data-category="keybinds" data-modal="keybinds-modal">
+                    <div class="resource-image">
+                        <img src="img/keybinds.png" alt="Keybinds Guide">
+                        <div class="resource-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Keybinds Guide</h3>
+                        <p class="resource-description">Master all the essential keybinds for smooth gameplay in Grit City RP.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 3 -->
+                <div class="resource-card" data-category="jobs" data-modal="jobs-modal">
+                    <div class="resource-image">
+                        <img src="img/job-overview.png" alt="Jobs Overview">
+                        <div class="resource-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Jobs Overview</h3>
+                        <p class="resource-description">Explore all available jobs and career paths in the city.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 4 -->
+                <div class="resource-card" data-category="systems" data-modal="economy-modal">
+                    <div class="resource-image">
+                        <img src="img/economy-overview.png" alt="Economy System">
+                        <div class="resource-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Economy System</h3>
+                        <p class="resource-description">Understanding the balanced economy and financial systems.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 5 -->
+                <div class="resource-card" data-category="guides" data-modal="phone-modal">
+                    <div class="resource-image">
+                        <img src="img/phoneguide.png" alt="Phone Tutorial">
+                        <div class="resource-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Phone Tutorial</h3>
+                        <p class="resource-description">Learn how to use all features of your in-game smartphone.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 6 -->
+                <div class="resource-card" data-category="systems" data-modal="housing-modal">
+                    <div class="resource-image">
+                        <img src="img/housing.png" alt="Housing System">
+                        <div class="resource-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Housing System</h3>
+                        <p class="resource-description">Everything you need to know about owning and customizing properties.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 7 -->
+                <div class="resource-card" data-category="keybinds" data-modal="controls-modal">
+                    <div class="resource-image">
+                        <img src="img/carcontrols.png" alt="Vehicle Controls">
+                        <div class="resource-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">Vehicle Controls</h3>
+                        <p class="resource-description">Master all vehicle controls and mechanics for better driving.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 8 -->
+                <div class="resource-card" data-category="guides" data-modal="crafting-modal">
+                    <div class="resource-image">
+                        <img src="img/vipguide.png" alt="VIP Guide">
+                        <div class="resource-icon">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                    </div>
+                    <div class="resource-details">
+                        <h3 class="resource-title">VIP Guide</h3>
+                        <p class="resource-description">Complete guide to Grit City VIP system inlcuding available Tiers, Perks, & Rewards.</p>
+                        <a href="#" class="view-more">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <div class="single-row-icons">
+                    <a href="https://x.com/GritCityRP" class="social-icon"><i class="fa-brands fa-x"></i></a>
+                    <a href="https://discord.gg/3tTMvj9DcA" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@gritcityroleplay" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-mastodon"></i></a>
+                    <a href="https://GritCityRP.com/" class="social-icon"><i class="fas fa-link"></i></a>
+                    <a href="https://www.instagram.com/GritCityRoleplay" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Grit City Roleplay. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <a href="attributions.html" class="footer-link">Attributions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Modals -->
+    
+    <!-- Cache Clearing Modal -->
+<!-- Cache Clearing Modal -->
+<div class="modal" id="cache-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Cache Clearing Guide</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <!-- Replace the static image with YouTube embed -->
+            <div class="video-container">
+                <iframe 
+                    width="100%" 
+                    height="400" 
+                    src="https://www.youtube.com/embed/9Jq16iEzyOI" 
+                    title="Clearing FiveM Cache"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">How To Clear Your FiveM Cache</h3>
+                <p>To clear your FiveM cache, first, <strong>ensure FiveM is completely closed.</strong> Then, open File Explorer and navigate to <strong>%localappdata%\FiveM</strong>. Delete the "FiveM" folder. Finally, restart FiveM, and it will automatically rebuild the cache.</p>
+                
+                <h4>Detailed Steps:</h4>
+                <ul>
+                    <li><strong>Close FiveM:</strong> Make sure FiveM is not running in the background.</li>
+                    <li><strong>Navigate to Local App Data:</strong> Open File Explorer and type <strong>%localappdata%</strong> into the address bar and press Enter.</li>
+                    <li><strong>Locate the FiveM Folder:</strong> You should find the "FiveM" folder within the Local App Data directory.</li>
+                    <li><strong>Delete the FiveM Folder:</strong> Delete the entire "FiveM" folder.</li>
+                    <li><strong>Restart FiveM:</strong> Launch FiveM again. It will automatically re-download necessary files and rebuild the cache.</li>
+                </ul>
+            </div>
+            
+            <div class="modal-section">
+                <h3 class="modal-section-title">Alternative Method</h3>
+                <p>If you're having trouble clearing the cache, try deleting the "priv" and "server" folders within the FiveM Application Data/Cache folder. This can sometimes resolve issues if deleting the entire folder doesn't work.</p>
+                
+                <h4>When To Clear Cache:</h4>
+                <ul>
+                    <li>After server updates</li>
+                    <li>When experiencing texture or model glitches</li>
+                    <li>If you encounter connection issues</li>
+                    <li>When scripts aren't loading properly</li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+</div>
+   
+   <!-- Keybinds Modal -->
+   <div class="modal" id="keybinds-modal">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">Keybinds Guide</h2>
+               <button class="close-modal">&times;</button>
+           </div>
+           <div class="modal-body">
+               <img src="img/keybinds.png" alt="Keybinds Guide" class="modal-image">
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">How To Bind A Key in FiveM™</h3>
+                   <ul>
+                       <li>Press F8 to open the console</li>
+                       <li>Type the following (examples):</li>
+                   </ul>
+                   
+                   <p>Example 1:</p>
+                   <pre class="code-block"><code>bind keyboard F2 escort</code></pre>
+                   
+                   <p>Example 2:</p>
+                   <pre class="code-block"><code>bind keyboard F3 givekeys</code></pre>
+                   
+                   <p>Example 3:</p>
+                   <pre class="code-block"><code>bind keyboard F4 cuff</code></pre>
+                   
+                   <p>Example 4:</p>
+                   <pre class="code-block"><code>bind keyboard F12 impound</code></pre>
+                   
+                   <p>Example 5:</p>
+                   <pre class="code-block"><code>bind keyboard F10 refreshskin</code></pre>
+                   
+                   <p>Example 6 (shared emotes):</p>
+                   <pre class="code-block"><code>bind keyboard "F9" "nearby handshake"</code></pre>
+                   
+                   <p>Example 7 (emotes):</p>
+                   <pre class="code-block"><code>bind keyboard "F3" "e wave"</code></pre>
+                   
+                   <ul>
+                       <li>Press <strong>ENTER</strong></li>
+                       <li>Press F8 to close menu.</li>
+                   </ul>
+                   
+                   <h4>NOTES</h4>
+                   <ul>
+                       <li><em>The</em> above listed commands can be copy/pasted into the F8 command box and commands as well as keys can be changed to meet your needs.</li>
+                       <li><em>Any</em> <code>/command</code> can be used.</li>
+                       <li><em>Emotes</em> can also be used but they use a different command line.</li>
+                       <li><em>Any</em> keyboard key can be used but you must know what Windows™ and FiveM™ calls that key.</li>
+                   </ul>
+                   
+                   <h4>How to Unbind A Key in FiveM™</h4>
+                   <ul>
+                       <li>Press F8</li>
+                       <li>Type the following (example key):</li>
+                   </ul>
+                   <pre class="code-block"><code>unbind keyboard F12</code></pre>
+                   <ul>
+                       <li>Press <strong>ENTER</strong></li>
+                       <li>Press F8 to close console.</li>
+                       <li>Test keybinds.</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Essential Keybinds</h3>
+                   <p>Mastering these keybinds will significantly improve your gameplay experience in Grit City RP. These are the default bindings, but remember you can customize most of them in your settings.</p>
+                   
+                   <ul>
+                       <li><strong>T</strong> - Chat</li>
+                       <li><strong>Y</strong> - Radio chat (when radio is equipped)</li>
+                       <li><strong>M</strong> - Phone</li>
+                       <li><strong>TAB / Z</strong> - Inventory</li>
+                       <li><strong>F4</strong> - Emote menu</li>
+                       <li><strong>F6</strong> - Job menu</li>
+                       <li><strong>F7</strong> - Billing menu</li>
+                       <li><strong>`</strong> - Voice range</li>
+                       <li><strong>B</strong> - Point finger</li>
+                       <li><strong>X</strong> - Hands up</li>
+                       <li><strong>G</strong> - Emergency button (when down)</li>
+                       <li><strong>L</strong> - Lock/unlock owned vehicle</li>
+                       <li><strong>G</strong> - Toggle vehicle engine</li>
+                       <li><strong>F</strong> - Enter vehicle</li>
+                       <li><strong>I</strong> - HUD Settings Menu</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Advanced Controls</h3>
+                   <p>Once you've mastered the basics, these advanced controls will help you with more specific actions:</p>
+                   
+                   <ul>
+                       <li><strong>Left Alt(3rd Eye)</strong> - Enable target cursor for interacting with various items</li>
+                       <li><strong>Page Up/Down</strong> - Cruise control (in vehicle)</li>
+                       <li><strong>ESC</strong> - City map</li>
+                       <li><strong>E</strong> - Context menu/interaction</li>
+                       <li><strong>Left Shift</strong> - Sprint/boost (vehicle)</li>
+                       <li><strong>/me [action]</strong> - Roleplay action</li>
+                       <li><strong>/do [event]</strong> - Describe environment</li>
+                       <li><strong>/ooc [message]</strong> - Out of character chat</li>
+                       <li><strong>F1 Radial</strong> - Access various sub menus thru your F1 radial, includes some job menu options</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Job-Specific Controls</h3>
+                   <p>Different jobs may have specialized controls. Here are some commonly used ones:</p>
+                   
+                   <ul>
+                       <li><strong>F5</strong> - Police radar (LEO only)</li>
+                       <li><strong>.</strong> - Toggle police computer (LEO only)</li>
+                       <li><strong>G</strong> - Toggle holster grab animation (LEO only)</li>
+                       <li><strong>F9</strong> - Mechanic menu (Mechanic only)</li>
+                       <li><strong>Delete</strong> - EMS stretcher control (EMS only)</li>
+                       <li><strong>F10</strong> - Job actions menu</li>
+                   </ul>
+               </div>
+           </div>
+           <div class="modal-footer">
+               <button class="close-btn">Close</button>
+           </div>
+       </div>
+   </div>
+   
+   <!-- Jobs Modal -->
+   <div class="modal" id="jobs-modal">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">Jobs Overview</h2>
+               <button class="close-modal">&times;</button>
+           </div>
+           <div class="modal-body">
+               <img src="img/job-overview.png" alt="Jobs Overview" class="modal-image">
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Legal Jobs</h3>
+                   <p>Grit City offers numerous legal employment opportunities for citizens looking to make an honest living:</p>
+                   
+                   <ul>
+                       <li><strong>Law Enforcement</strong> - Maintain law and order as LSPD, BCSO, or State Police</li>
+                       <li><strong>Emergency Medical Services</strong> - Save lives as an EMT or Paramedic</li>
+                       <li><strong>Fire Department</strong> - Respond to fires and other emergencies</li>
+                       <li><strong>Mechanic</strong> - Repair and upgrade vehicles</li>
+                       <li><strong>Taxi Driver</strong> - Transport citizens around the city</li>
+                       <li><strong>Truck Driver</strong> - Deliver goods across the map</li>
+                       <li><strong>Fisherman</strong> - Catch and sell various fish species</li>
+                       <li><strong>Miner</strong> - Extract valuable minerals from the quarry</li>
+                       <li><strong>Real Estate Agent</strong> - Help citizens find their dream homes</li>
+                       <li><strong>Lawyer</strong> - Represent clients in court while working your way thru the ranks of our Department of Justice(whitelist required)</li>
+                       <li><strong>Certified Flight Instructor</strong> - Take to the skies training all civilian and LEO pilots in Grit City (whitelist required)</li>
+                       <li><strong>Airport Ground Crew</strong> - Get your start in aviation by guiding and parking aircraft at LSIA</li>
+                       <li><strong>Dispatcher</strong> - Show off your communication skills as a Certified Dispatcher for all Emergency Services branches(whitelist required)</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Criminal Activities</h3>
+                   <p>For those with less legitimate aspirations, several illegal activities exist. Remember that criminal actions have consequences and risk factors:</p>
+                   
+                   <ul>
+                       <li><strong>Drug Production/Dealing</strong> - Manufacture and sell illegal substances</li>
+                       <li><strong>Robbery</strong> - Target stores, banks, or individuals</li>
+                       <li><strong>Car Theft</strong> - Steal and sell vehicles</li>
+                       <li><strong>Black Market Trading</strong> - Deal in illegal goods and contraband</li>
+                       <li><strong>Hacking</strong> - Bypass electronic security systems</li>
+                   </ul>
+                   <p><strong>Note:</strong> Criminal activities should be roleplayed properly and follow server rules regarding escalation, planning, and NLR (New Life Rule).</p>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Business Ownership</h3>
+                   <p>Beyond regular employment, ambitious citizens can establish their own businesses:</p>
+                   
+                   <ul>
+                       <li><strong>Restaurants/Cafés</strong> - Serve food and beverages</li>
+                       <li><strong>Retail Shops</strong> - Sell various goods to citizens</li>
+                       <li><strong>Nightclubs</strong> - Entertainment venues for nightlife</li>
+                       <li><strong>Repair Shops</strong> - Specialized vehicle services</li>
+                       <li><strong>Private Security</strong> - Protect clients and properties</li>
+                       <li><strong>Entertainment Venues</strong> - Start a career in the amusement industry with your own bowling alley or pool hall</li>
+                   </ul>
+                   <p>Business ownership requires application and approval from roleplay staff and is available only during select time frames(announcements). Contact the roleplay team through the ticket system inside Discord for more information about starting your own business.</p>
+               </div>
+           </div>
+           <div class="modal-footer">
+               <button class="close-btn">Close</button>
+           </div>
+       </div>
+   </div>
+   
+   <!-- Economy Modal -->
+   <div class="modal" id="economy-modal">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">Economy System</h2>
+               <button class="close-modal">&times;</button>
+           </div>
+           <div class="modal-body">
+               <img src="img/economy-overview.png" alt="Economy System" class="modal-image">
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Currency Overview</h3>
+                   <p>Grit City uses a carefully balanced economy system designed to provide realistic progression and meaningful financial choices:</p>
+                   
+                   <ul>
+                       <li>The standard currency is USD ($)</li>
+                       <li>New citizens start with $5,000 cash / $30,000 in the bank to begin their life in Grit City</li>
+                       <li>Bank accounts are available at all Maze Bank locations</li>
+                       <li>ATMs are located throughout the city for convenient access</li>
+                       <li>Money can be stored as cash (in inventory) or in bank accounts</li>
+                       <li>Cash transfers between players are possible through the inventory menu</li>
+                       <li>Bank transfers require the recipient's account details</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Income Sources</h3>
+                   <p>There are multiple ways to earn money in Grit City:</p>
+                   
+                   <ul>
+                       <li><strong>Legal Jobs</strong> - Steady income with minimal risk</li>
+                       <li><strong>Business Ownership</strong> - Higher potential earnings with investment required</li>
+                       <li><strong>Investments</strong> - Stock market trading and property ownership</li>
+                       <li><strong>Criminal Activities</strong> - Higher risk but potentially higher rewards</li>
+                       <li><strong>Item Crafting</strong> - Create and sell specialized items</li>
+                       <li><strong>Saving/Interest</strong> - Hold your valuable income in a savings account and benefit from interest earnings</li>
+                       <li><strong>Trading</strong> - Buy low, sell high on various commodities</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Major Expenses</h3>
+                   <p>Managing finances requires balancing several ongoing expenses:</p>
+                   
+                   <ul>
+                       <li><strong>Property Costs</strong> - Apartment rent or house mortgages</li>
+                       <li><strong>Vehicle Expenses</strong> - Purchase, customization, insurance, and repairs</li>
+                       <li><strong>Taxes</strong> - Income tax on legal earnings (automatically deducted)</li>
+                       <li><strong>Food and Basic Needs</strong> - Regular consumption requirements</li>
+                       <li><strong>Medical Care</strong> - Hospital bills after injuries</li>
+                       <li><strong>Legal Fees</strong> - Court costs, fines, and lawyer fees</li>
+                       <li><strong>Business Overhead</strong> - Staff salaries, supplies, and utilities</li>
+                   </ul>
+               </div>
+               
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Money Laundering</h3>
+                   <p>Criminal earnings often come as "dirty money" which must be laundered before it can be deposited in banks or used for major purchases:</p>
+                   
+                   <ul>
+                       <li>Dirty money has a distinct inventory item appearance</li>
+                       <li>Various laundering methods exist (discovered through roleplay)</li>
+                       <li>Laundering typically incurs a percentage fee</li>
+                       <li>Carrying large amounts of dirty money increases risk if caught by law enforcement</li>
+                   </ul>
+                   <p><strong>Note:</strong> Money laundering mechanics are intentionally not fully documented - discover them through roleplay and character connections.</p>
+               </div>
+           </div>
+           <div class="modal-footer">
+               <button class="close-btn">Close</button>
+           </div>
+       </div>
+   </div>
+   
+<!-- Phone Modal -->
+<div class="modal" id="phone-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Phone Tutorial</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img src="img/phoneguide.png" alt="Phone Tutorial" class="modal-image">
+
+            <!-- Phone Features Section -->
+            <div class="modal-section">
+                <h3 class="modal-section-title">Phone Features</h3>
+                <p>Your in-game smartphone is your primary tool for communication and accessing various services in Grit City:</p>
+
+                <ul>
+                    <li><strong>Calls & Messages</strong> – Contact other players and businesses</li>
+                    <li><strong>Contacts</strong> – Manage your contact list</li>
+                    <li><strong>Banking</strong> – Check balance and transfer money</li>
+                    <li><strong>Twitter</strong> – Social media platform for city news</li>
+                    <li><strong>Yellow Pages</strong> – Business listings and classifieds</li>
+                    <li><strong>Camera</strong> – Take photos and selfies</li>
+                    <li><strong>Notes</strong> – Write and save important information</li>
+                    <li><strong>Garage Valet</strong> – Request and locate your vehicles</li>
+                    <li><strong>Birdy</strong> – Post and follow others with rich media support</li>
+                    <li><strong>DarkChat</strong> – Anonymous encrypted messaging app</li>
+                    <li><strong>Live Stream on InstaPic</strong> – Go live and engage followers in real time</li>
+                    <li><strong>Maps App</strong> – Navigate the city with GPS and locations</li>
+                    <li><strong>Voice Memos App</strong> – Record and save audio notes</li>
+                    <li><strong>Weather App</strong> – Check real-time forecasts and weather alerts</li>
+                    <li><strong>Marketplace App</strong> – Buy and sell items with players</li>
+                    <li><strong>Music App</strong> – Stream and manage music playlists</li>
+                    <li><strong>Trendy App</strong> – Explore fashion trends and buy digital outfits</li>
+                    <li><strong>Crypto Management</strong> – Monitor and trade digital currencies</li>
+                    <li><strong>...and more!</strong></li>
+                </ul>
+            </div>
+
+            <!-- Keybinds and Commands Section -->
+<div class="modal-section">
+    <h3 class="modal-section-title">Keybinds & Commands</h3>
+
+    <p><strong>Keybinds:</strong></p>
+
+    <table style="width:100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="border-bottom: 1px solid #ccc; text-align: left; padding: 8px;">Category</th>
+                <th style="border-bottom: 1px solid #ccc; text-align: left; padding: 8px;">Key</th>
+                <th style="border-bottom: 1px solid #ccc; text-align: left; padding: 8px;">Description</th>
+                <th style="border-bottom: 1px solid #ccc; text-align: left; padding: 8px;">Command</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px;">Misc</td>
+                <td style="padding: 8px;">Y</td>
+                <td style="padding: 8px;">Open the phone</td>
+                <td style="padding: 8px;">/phone</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Misc</td>
+                <td style="padding: 8px;">ALT</td>
+                <td style="padding: 8px;">Toggle cursor / Phone Focus</td>
+                <td style="padding: 8px;">/togglePhoneFocus</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Calls</td>
+                <td style="padding: 8px;">ENTER</td>
+                <td style="padding: 8px;">Answer call</td>
+                <td style="padding: 8px;">/answerCall</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Calls</td>
+                <td style="padding: 8px;">BACKSPACE</td>
+                <td style="padding: 8px;">Decline call</td>
+                <td style="padding: 8px;">/declineCall</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Camera</td>
+                <td style="padding: 8px;">ARROW UP</td>
+                <td style="padding: 8px;">Flip camera</td>
+                <td style="padding: 8px;">/flipCam</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Camera</td>
+                <td style="padding: 8px;">ENTER</td>
+                <td style="padding: 8px;">Take a photo/video</td>
+                <td style="padding: 8px;">/takePhoto</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Camera</td>
+                <td style="padding: 8px;">E</td>
+                <td style="padding: 8px;">Toggle camera flash</td>
+                <td style="padding: 8px;">/toggleCameraFlash</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Camera</td>
+                <td style="padding: 8px;">ARROW LEFT</td>
+                <td style="padding: 8px;">Cycle camera mode left</td>
+                <td style="padding: 8px;">/leftMode</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Camera</td>
+                <td style="padding: 8px;">ARROW RIGHT</td>
+                <td style="padding: 8px;">Cycle camera mode right</td>
+                <td style="padding: 8px;">/rightMode</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <p><strong>Available Commands:</strong></p>
+    <ul>
+        <li><code>/phonedebug</code> – Client-side only; toggles debug prints on/off.</li>
+        <li><code>/toggleverified app [birdy/instapic/trendy] username verified [1/0]</code> – Manually verify users on specific apps.</li>
+        <li><code>/changepassword app [birdy/instapic/trendy/mail] username password</code> – Change account passwords for supported apps.</li>
+    </ul>
+</div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+   
+   <!-- Housing Modal -->
+   <div class="modal" id="housing-modal">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">Housing System</h2>
+               <button class="close-modal">&times;</button>
+           </div>
+           <div class="modal-body">
+               <img src="img/housing.png" alt="Housing System" class="modal-image">
+               
+               <!-- Housing modal content would go here -->
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Property Options</h3>
+                   <p>Grit City offers various housing options for citizens at different price points:</p>
+                   
+                   <ul>
+                       <li><strong>Apartments</strong> - Budget-friendly starter homes</li>
+                       <li><strong>Houses</strong> - Mid-tier properties with yards</li>
+                       <li><strong>Luxury Homes</strong> - High-end properties with exclusive locations</li>
+                       <li><strong>Mansions</strong> - Top-tier properties with extensive customization</li>
+                   </ul>
+               </div>
+           </div>
+           <div class="modal-footer">
+               <button class="close-btn">Close</button>
+           </div>
+       </div>
+   </div>
+   
+   <!-- Vehicle Controls Modal -->
+   <div class="modal" id="controls-modal">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">Vehicle Controls</h2>
+               <button class="close-modal">&times;</button>
+           </div>
+           <div class="modal-body">
+               <img src="img/carcontrols.png" alt="Vehicle Controls" class="modal-image">
+               
+               <!-- Vehicle controls modal content would go here -->
+               <div class="modal-section">
+                   <h3 class="modal-section-title">Basic Vehicle Controls</h3>
+                   <p>Master these essential vehicle controls for better driving in Grit City:</p>
+                   
+                   <ul>
+                       <li><strong>F</strong> - Enter/exit vehicle</li>
+                       <li><strong>W/S</strong> - Accelerate/brake</li>
+                       <li><strong>A/D</strong> - Turn left/right</li>
+                       <li><strong>Left Shift</strong> - Engine boost/nitrous (if equipped)</li>
+                       <li><strong>Space</strong> - Handbrake</li>
+                       <li><strong>B</strong> - Seat belt toggle</li>
+                       <li><strong>L</strong> - Open doorlock keyfob</li>
+                       <li><strong>G</strong> - Toggle engine</li>
+                       <li><strong>H</strong> - Toggle exterior lights</li>
+                       <li><strong>HOME</strong> - Toggle vehicle controls UI</li>
+                       <li><strong>BACKSPACE(hold)</strong> - Toggle hazard lights</li>
+                       <li><strong>-</strong> - Toggle left turn signal</li>
+                       <li><strong>+</strong> - Toggle right turn signal</li>
+                   </ul>
+               </div>
+           </div>
+           <div class="modal-footer">
+               <button class="close-btn">Close</button>
+           </div>
+       </div>
+   </div>
+   
+<!-- Crafting Modal -->
+<div class="modal" id="crafting-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">VIP Guide</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img src="img/vipguide.png" alt="VIP Guide" class="modal-image">
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Grit City Roleplay <u><strong>VIP Membership</strong></u></h3>
+                <p>
+                    Unlock an elevated experience with our <strong>Grit City Roleplay</strong> VIP system, offering 
+                    <strong>three exclusive tiers</strong> packed with unique perks and privileges designed to 
+                    enhance your roleplaying adventure.
+                </p>
+
+                <h4><u><strong>VIP Tier 1:</strong></u></h4>
+                <ul>
+                    <li><strong>Access to a selection of exclusive VIP cars</strong> through our GTA6-themed VIP Dealership.</li>
+                    <li><strong>Priority queueing</strong> – skip the wait and join the server faster.</li>
+                    <li><strong>Improved housing options</strong> – unique properties tailored to your VIP status.</li>
+                    <li><strong>Exclusive item access</strong> – shop from VIP-only stores for clothing bags, weapon skins, and more.</li>
+                    <li><strong>VIP tag</strong> – proudly display your status in-game and on Discord.</li>
+                    <li><strong>Queue Boost:</strong> Comes with entry-level queue points to help reduce time spent stuck “waiting on TSA clearance” during peak hours.</li>
+                </ul>
+
+                <h4><u><strong>VIP Tier 2:</strong></u></h4>
+                <ul>
+                    <li>Includes <strong>all Tier 1 perks</strong>.</li>
+                    <li><strong>Upgraded VIP housing</strong> – properties valued at higher in-game currency levels.</li>
+                    <li><strong>Expanded premium VIP vehicle access</strong> – even more makes and models to explore.</li>
+                    <li><strong>Boosted in-game cash stipends</strong> to help you thrive in your RP endeavors.</li>
+                    <li><strong>Queue Boost:</strong> More queue points than Tier 1 – even less time waiting during busy hours.</li>
+                </ul>
+
+                <h4><u><strong>VIP Tier 3:</strong></u></h4>
+                <ul>
+                    <li>Includes <strong>all Tier 1 and 2 benefits</strong>.</li>
+                    <li><strong>Ultimate VIP housing</strong> – access to properties worth <strong>$1 million+</strong>.</li>
+                    <li><strong>Exclusive RP opportunities</strong> and custom Tier 3-only features.</li>
+                    <li><strong>Personalized staff support</strong> to enhance your RP experience.</li>
+                    <li><strong>Queue Boost:</strong> Top-tier queue priority with the highest points available – minimum time on the tarmac during high traffic.</li>
+                </ul>
+
+                <h4><u><strong>How to Become a VIP Member</strong></u></h4>
+                <ol>
+                    <li><strong>Plan ahead:</strong> Browse our housing/interior options in advance. Even if properties aren't currently listed, it helps to have future picks in mind. (You’re not locked in – you can change your mind later!)</li>
+                    <li><strong>Visit our official VIP store:</strong><br>
+                        <a href="https://fiveodevelopment.tebex.io/category/webtemplate" target="_blank" style="font-weight:bold; text-decoration:underline;">
+                            https://fiveodevelopment.tebex.io/category/webtemplate
+                        </a>
+                    </li>
+                    <li><strong>Log into Tebex</strong> using your Discord (must be the same account you're using in our community Discord – that's how your perks get assigned).</li>
+                    <li>Click on <strong>VIP TIERS</strong> from the left-hand menu and choose your desired membership package.</li>
+                    <li><strong>Complete your transaction</strong> and that's it – welcome to the VIP club!</li>
+                </ol>
+                <p>
+                    <em>*The entire process can be completed while you're in-city – no need to “fly out!” Once your transaction completes, 
+                    your VIP roles are automatically applied via our Tebex bot. That means you can immediately walk into a VIP store 
+                    and start enjoying your brand-new perks.*</em>
+                </p>
+
+                <h4><u><strong>Join Today</strong></u></h4>
+                <p>
+                    Become a part of the <strong>Grit City Roleplay</strong> VIP community and take your RP to the next level. 
+                    Support our development and unlock a premium experience by joining through our official VIP store:
+                </p>
+                <p>
+                    <a href="https://fiveodevelopment.tebex.io/category/webtemplate" target="_blank" style="font-weight:bold; text-decoration:underline;">
+                        https://fiveodevelopment.tebex.io/category/webtemplate
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="close-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+
+   
+   <script>
+       // Mobile Menu Toggle
+       document.getElementById('menuToggle').addEventListener('click', function() {
+           document.querySelector('.sidebar').classList.toggle('active');
+           
+           const icon = this.querySelector('i');
+           if (document.querySelector('.sidebar').classList.contains('active')) {
+               icon.classList.remove('fa-bars');
+               icon.classList.add('fa-times');
+           } else {
+               icon.classList.remove('fa-times');
+               icon.classList.add('fa-bars');
+           }
+       });
+       
+       // Category Filtering
+       const categoryFilters = document.querySelectorAll('.category-filter');
+       const resourceCards = document.querySelectorAll('.resource-card');
+       
+       categoryFilters.forEach(filter => {
+           filter.addEventListener('click', function() {
+               // Remove active class from all filters
+               categoryFilters.forEach(btn => btn.classList.remove('active'));
+               
+               // Add active class to clicked filter
+               this.classList.add('active');
+               
+               // Get selected category
+               const category = this.getAttribute('data-category');
+               
+               // Show/hide resources based on category
+               resourceCards.forEach(card => {
+                   if (category === 'all' || card.getAttribute('data-category') === category) {
+                       card.style.display = 'block';
+                   } else {
+                       card.style.display = 'none';
+                   }
+               });
+           });
+       });
+       
+       // Modal Functionality
+       const resourceCardsWithModals = document.querySelectorAll('.resource-card[data-modal]');
+       const modals = document.querySelectorAll('.modal');
+       const closeButtons = document.querySelectorAll('.close-modal, .close-btn');
+       
+       // Open modal when clicking on a resource card
+       resourceCardsWithModals.forEach(card => {
+           card.addEventListener('click', function() {
+               const modalId = this.getAttribute('data-modal');
+               const modal = document.getElementById(modalId);
+               
+               if (modal) {
+                   modal.classList.add('active');
+                   document.body.style.overflow = 'hidden'; // Prevent body scrolling
+               }
+           });
+       });
+       
+       // Close modal when clicking close button or outside modal
+       closeButtons.forEach(button => {
+           button.addEventListener('click', function() {
+               const modal = this.closest('.modal');
+               modal.classList.remove('active');
+               document.body.style.overflow = 'auto'; // Re-enable body scrolling
+           });
+       });
+       
+       // Close modal when clicking outside of modal content
+       modals.forEach(modal => {
+           modal.addEventListener('click', function(e) {
+               if (e.target === this) {
+                   this.classList.remove('active');
+                   document.body.style.overflow = 'auto';
+               }
+           });
+       });
+       
+       // Close modal with Escape key
+       document.addEventListener('keydown', function(e) {
+           if (e.key === 'Escape') {
+               modals.forEach(modal => {
+                   if (modal.classList.contains('active')) {
+                       modal.classList.remove('active');
+                       document.body.style.overflow = 'auto';
+                   }
+               });
+           }
+       });
+
+       // Add click-to-copy functionality for code blocks
+       document.addEventListener('DOMContentLoaded', function() {
+           const codeBlocks = document.querySelectorAll('.code-block');
+           
+           codeBlocks.forEach(block => {
+               block.addEventListener('click', function() {
+                   const code = this.querySelector('code').textContent;
+                   
+                   // Copy to clipboard
+                   navigator.clipboard.writeText(code).then(() => {
+                       // Create a "Copied!" indicator if it doesn't exist
+                       if (!this.querySelector('.copy-indicator')) {
+                           const copyIndicator = document.createElement('div');
+                           copyIndicator.textContent = 'Copied!';
+                           copyIndicator.className = 'copy-indicator';
+                           
+                           // Add the indicator to the code block
+                           this.appendChild(copyIndicator);
+                           
+                           // Remove the indicator after 2 seconds
+                           setTimeout(() => {
+                               copyIndicator.remove();
+                           }, 2000);
+                       }
+                   }).catch(err => {
+                       console.error('Failed to copy: ', err);
+                   });
+               });
+           });
+           
+           // Add active class to Resources nav link
+           const currentPage = window.location.pathname.split('/').pop();
+           
+           const navLinks = document.querySelectorAll('.nav-links .nav-link');
+           
+           navLinks.forEach(link => {
+               const linkHref = link.getAttribute('href');
+               
+               if (linkHref === currentPage || 
+                   (currentPage === '' && linkHref === 'index.html') ||
+                   (currentPage === '/' && linkHref === 'index.html')) {
+                   link.classList.add('active');
+               } else {
+                   link.classList.remove('active');
+               }
+           });
+       });
+   </script>
+</body>
+</html>
